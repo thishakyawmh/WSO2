@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outing - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+          background-color: #262626;
+          font-family: "Poppins", sans-serif;
+          overflow: hidden; /* Disable scrollbars */
+        }
+
+        .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px 70px;
+          background-color: rgba(0, 0, 0, 0.4); /* Transparent box */
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 10;
+          border-bottom: 1px solid white; /* Add bottom border */
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop id="bg-video">
+        <source src="bg3.mp4" type="video/mp4">
+    </video>
+
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Outing</h1>
+        </div>
+        <div class="nav-button">
+            <button id="accountButton"> <i class="fa-solid fa-user">&nbsp;</i> Account</button>
+        </div>   
+    </nav>
+
+    <header>
+        <div class="header-container">
+            <!-- Left side content -->
+            <div class="header-container-left">
+                <div class="text-content">
+                    <p class="heading">Plan & Enjoy Your <br> Perfect Day Out <br>Effortlessly</p>
+                    <p class="tagline">Discover, Customize, and Enjoy Unforgettable Adventures!</p>
+                    <div class="buttons-inline">
+                        <button id="find-part-button-1"> <i class="fa-solid fa-plus"></i> &nbsp; New Plan</button>
+                        <button id="find-part-button-2"> <i class="fa-solid fa-clock-rotate-left"></i> &nbsp; Previous Plans</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Right side (Live user count and total plans created) -->
+            <div class="header-container-right">
+                <div class="stat-box">
+                    <p class="stat-label">Registered Users</p>
+                    <p id="live-user-count" class="stat-number">1500+</p>
+                </div>
+                <div class="stat-box">
+                    <p class="stat-label">Plans Created</p>
+                    <p id="total-plans" class="stat-number">5000+</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Button with Phone Icon -->
+    <div class="contact-button">
+    <a href="tel:+1234567890" class="contact-link">
+        <i class="fa-solid fa-comments"></i>
+    </a>
+    </div>
+
+    
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
