@@ -6,6 +6,7 @@
     <title>Outing - New Plan</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
        
     </style>
@@ -76,196 +77,37 @@
         <div class="form-row">
             <div class="form-group">
                 <label for="day-out-type">Type of Day Out</label>
-                <select id="day-out-type" name="day_out_type" required>
+                <select id="type" name="day_out_type" required>
                     <option value="" disabled selected>Select type of the day</option>
-                    <option value="outdoors">Outdoors (Parks, Beaches, Hiking)</option>
-                    <option value="indoor">Indoor (Museums, Theaters, Cafes)</option>
-                    <option value="adventure">Adventure (Water Sports, Skydiving, Go-Karting)</option>
-                    <option value="relaxation">Relaxation (Spas, Resorts)</option>
+                    <option id="restaurant" value="restaurant">Restaurant</option>
+                    <option id="hotel" value="hotel">Hotel</option>
+                    <option id="cafe" value="cafe">Cafe</option>
+                    <option id="bakery" value="bakery">Bakery</option>
+                    <option id="movie_theater" value="movie_theater">Movie Theater</option>
+                    <option id="tourist_attraction" value="tourist_attraction">Tourist Attraction</option>
+                    <option id="park" value="park">Park</option>
+                    <option id="amusement_park" value="amusement_park">Amusement Park</option>
+                    <option id="campground" value="campground">Campground</option>
+                    <option id="museum" value="museum">Museum</option>
+                    <option id="shopping_mall" value="shopping_mall">Shopping Mall</option>
+                    <option id="supermarket" value="supermarket">Supermarket</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="location">Location Preferences</label>
-                    <input type="text" id="plan-name" name="plan-name" required placeholder="Search Your Location">
+                    <input type="text" id="autocomplete" name="plan-name" required placeholder="Search Your Location">
             </div>
         </div>
 
-
-        <div class="loc-list-container">
-            <!-- Card 1 -->
-            <div class="loc-list-card">
-                <div class="loc-list-image">
-                    <img src="image .jpg" alt="Place Image" />
-                </div>
-                <div class="loc-list-name">
-                    <h3>Place Name 1</h3>
-                </div>
-                <div class="loc-list-rating-container">
-                    <div class="loc-list-rating">
-                        <span>⭐⭐⭐⭐</span> <!-- Example star ratings -->
-                        <span>4.0</span>
-                    </div>
-                    <div class="loc-list-divider"></div>
-                    <button class="loc-list-map-button">View on Map</button>
-                </div>
-                <button class="loc-list-add-button"><i class="fa-solid fa-plus"></i>&nbsp;Add to List</button>
-            </div>
-        
-            <!-- Card 2 -->
-            <div class="loc-list-card">
-                <div class="loc-list-image">
-                    <img src="image .jpg" alt="Place Image" />
-                </div>
-                <div class="loc-list-name">
-                    <h3>Place Name 1</h3>
-                </div>
-                <div class="loc-list-rating-container">
-                    <div class="loc-list-rating">
-                        <span>⭐⭐⭐⭐</span> <!-- Example star ratings -->
-                        <span>4.0</span>
-                    </div>
-                    <div class="loc-list-divider"></div>
-                    <button class="loc-list-map-button">View on Map</button>
-                </div>
-                <button class="loc-list-add-button"><i class="fa-solid fa-plus"></i>&nbsp;Add to List</button>
-            </div>
-        
-            <!-- Card 3 -->
-            <div class="loc-list-card">
-                <div class="loc-list-image">
-                    <img src="image .jpg" alt="Place Image" />
-                </div>
-                <div class="loc-list-name">
-                    <h3>Place Name 1</h3>
-                </div>
-                <div class="loc-list-rating-container">
-                    <div class="loc-list-rating">
-                        <span>⭐⭐⭐⭐</span> <!-- Example star ratings -->
-                        <span>4.0</span>
-                    </div>
-                    <div class="loc-list-divider"></div>
-                    <button class="loc-list-map-button">View on Map</button>
-                </div>
-                <button class="loc-list-add-button"><i class="fa-solid fa-plus"></i>&nbsp;Add to List</button>
-            </div>
-        
-            <!-- Card 4 -->
-            <div class="loc-list-card">
-                <div class="loc-list-image">
-                    <img src="image .jpg" alt="Place Image" />
-                </div>
-                <div class="loc-list-name">
-                    <h3>Place Name 1</h3>
-                </div>
-                <div class="loc-list-rating-container">
-                    <div class="loc-list-rating">
-                        <span>⭐⭐⭐⭐</span> <!-- Example star ratings -->
-                        <span>4.0</span>
-                    </div>
-                    <div class="loc-list-divider"></div>
-                    <button class="loc-list-map-button">View on Map</button>
-                </div>
-                <button class="loc-list-add-button"><i class="fa-solid fa-plus"></i>&nbsp;Add to List</button>
-            </div>
-        </div>
-        
-        
-
-        <!-- Food Preferences (2 items per row) -->
-        <div class="form-row">
-            
-            <div class="form-group">
-                <label for="food-type">Food Preferences</label>
-                <select id="food-type" name="food_type">
-                    <option value="" disabled selected>Select the Option</option>
-                    <option value="no-foods">Do not include food in the plan</option>
-                    <option value="cafes">Cafes</option>
-                    <option value="restaurants">Restaurants</option>
-                    <option value="picnic">Picnic</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="loc-list-container">
-            <!-- Card 1 -->
-            <div class="loc-list-card">
-                <div class="loc-list-image">
-                    <img src="image .jpg" alt="Place Image" />
-                </div>
-                <div class="loc-list-name">
-                    <h3>Place Name 1</h3>
-                </div>
-                <div class="loc-list-rating-container">
-                    <div class="loc-list-rating">
-                        <span>⭐⭐⭐⭐</span> <!-- Example star ratings -->
-                        <span>4.0</span>
-                    </div>
-                    <div class="loc-list-divider"></div>
-                    <button class="loc-list-map-button">View on Map</button>
-                </div>
-                <button class="loc-list-add-button"><i class="fa-solid fa-plus"></i>&nbsp;Add to List</button>
-            </div>
-        
-            <!-- Card 2 -->
-            <div class="loc-list-card">
-                <div class="loc-list-image">
-                    <img src="image .jpg" alt="Place Image" />
-                </div>
-                <div class="loc-list-name">
-                    <h3>Place Name 1</h3>
-                </div>
-                <div class="loc-list-rating-container">
-                    <div class="loc-list-rating">
-                        <span>⭐⭐⭐⭐</span> <!-- Example star ratings -->
-                        <span>4.0</span>
-                    </div>
-                    <div class="loc-list-divider"></div>
-                    <button class="loc-list-map-button">View on Map</button>
-                </div>
-                <button class="loc-list-add-button"><i class="fa-solid fa-plus"></i>&nbsp;Add to List</button>
-            </div>
-        
-            <!-- Card 3 -->
-            <div class="loc-list-card">
-                <div class="loc-list-image">
-                    <img src="image .jpg" alt="Place Image" />
-                </div>
-                <div class="loc-list-name">
-                    <h3>Place Name 1</h3>
-                </div>
-                <div class="loc-list-rating-container">
-                    <div class="loc-list-rating">
-                        <span>⭐⭐⭐⭐</span> <!-- Example star ratings -->
-                        <span>4.0</span>
-                    </div>
-                    <div class="loc-list-divider"></div>
-                    <button class="loc-list-map-button">View on Map</button>
-                </div>
-                <button class="loc-list-add-button"><i class="fa-solid fa-plus"></i>&nbsp;Add to List</button>
-            </div>
-        
-            <!-- Card 4 -->
-            <div class="loc-list-card">
-                <div class="loc-list-image">
-                    <img src="image .jpg" alt="Place Image" />
-                </div>
-                <div class="loc-list-name">
-                    <h3>Place Name 1</h3>
-                </div>
-                <div class="loc-list-rating-container">
-                    <div class="loc-list-rating">
-                        <span>⭐⭐⭐⭐</span> <!-- Example star ratings -->
-                        <span>4.0</span>
-                    </div>
-                    <div class="loc-list-divider"></div>
-                    <button class="loc-list-map-button">View on Map</button>
-                </div>
-                <button class="loc-list-add-button"><i class="fa-solid fa-plus"></i>&nbsp;Add to List</button>
-            </div>
-        </div>
-        
-
+        <br>
+        <a name="map"></a>
+        <div id="map"></div>
+        <br>
+        <table class="table table-bordered table-striped" id="places"></table>
+        <br><br>
+        <label for="FinalPlaces"><h4>Selected Places</h4></label>
+        <table class="table table-bordered table-striped" id="FinalPlaces"></table>
         <!-- Submit Button (Full row) -->
         <div class="form-group-button">
             <button type="submit" class="btn"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Generate Plan</button>
@@ -275,13 +117,11 @@
 
     </form>
 </div>
-
-    
-
-    
-    
-
-    <script src="script.js"></script>
-    
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="script.js"></script>
+<script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=!!!API-KEY!!!&libraries=places,maps,marker&callback=initMap"
+></script>
 </html>
