@@ -294,7 +294,9 @@ form {
 input[type="text"], 
 input[type="date"], 
 input[type="time"], 
-input[type="number"], 
+input[type="number"],
+input[type="email"],
+input[type="password"], 
 select {
     width: 100%;
     height: 60px;
@@ -305,7 +307,7 @@ select {
     font-size: 16px;
     box-sizing: border-box;
     font-family: Poppins;
-    background-color: #D6EFD8;
+    background-color: #C9D9F8;
 }
 
 
@@ -601,6 +603,139 @@ button.btn:hover {
     margin-top: 15px; /* Spacing above the button */
     font-family: Poppins;
     font-weight: 500;
+}
+
+
+
+  
+ /* Main container for the account forms */
+.account-container {
+    position: absolute; /* Use absolute positioning */
+    top: 50%; /* Position from the top */
+    left: 50%; /* Position from the left */
+    transform: translate(-50%, -50%); /* Center the container */
+    display: flex;
+    width: 900px;
+    max-width: 100%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Form container */
+.account-form-container {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Form title */
+.account-form-box h2 {
+    margin-bottom: 35px;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Input box styling */
+.account-input-box {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+/* Input field */
+.account-input-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    font-family: Poppins;
+}
+
+/* Label styling */
+.account-input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+/* Input focus effect */
+.account-input-box input:focus + label,
+.account-input-box input:not(:placeholder-shown) + label {
+    top: -20px;
+    font-size: 14px;
+    color: #160db8;
+}
+
+/* Button styling */
+.account-submit-btn, .account-google-btn button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #6c63ff;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Button hover effect */
+.account-submit-btn:hover, .account-google-btn button:hover {
+    background-color: #574fe3;
+}
+
+.account-google-btn i{
+    color: white;
+}
+
+/* Google button styling */
+.account-google-btn button {
+    background-color: #dd4b39;
+    margin-bottom: 20px;
+}
+
+/* Switch form text styling */
+.account-switch-form p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Image container */
+.account-image-container {
+    width: 50%;
+    background-color: #6c63ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image styling */
+.account-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .account-container {
+        flex-direction: column;
+    }
+    .account-image-container {
+        width: 100%;
+        height: 300px;
+    }
 }
 
 /* Responsive Design */
