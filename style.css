@@ -307,7 +307,7 @@ select {
     font-size: 16px;
     box-sizing: border-box;
     font-family: Poppins;
-    background-color: #C9D9F8;
+    background-color: #F5F8FF;
 }
 
 
@@ -726,6 +726,71 @@ button.btn:hover {
     height: 100%;
     object-fit: cover;
 }
+
+
+.previous-plan-title{
+    font-family: Poppins;
+    margin: 40px auto;
+    text-align: center;
+}
+
+
+/* Center the table in the page */
+.previous-table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+/* Table styling */
+.previous-plan-table {
+    border-collapse: separate;
+    border-spacing: 15px;
+    background-color: #f0f0f0;
+    border: none;
+    width: 100%;
+    margin: auto 50px;
+    border-radius: 15px;
+}
+
+/* Table header styling */
+.previous-plan-table th {
+    background-color: #160bb6;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Table row styling */
+.previous-plan-table td {
+    background-color: #ffffff;
+    padding: 12px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Make the entire cell clickable like a button */
+.previous-plan-table .open-cell {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #aa3304;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.previous-plan-table .open-cell:hover {
+    background-color: #5f0b00;
+}
+
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
