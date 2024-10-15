@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Signup Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles">
+</head>
+
+<body>
+  <div class="account-container">
+    <div class="account-form-container">
+      <div class="account-form-box">
+        <form id="loginForm">
+          <h2>Login</h2>
+          <div class="account-input-box">
+            <input type="email" name="email" required>
+            <label>Email</label>
+          </div>
+          <div class="account-input-box">
+            <input type="password" name="password" required>
+            <label>Password</label>
+          </div>
+          <div class="account-google-btn">
+            <button type="button"><i class="fa-brands fa-google"></i>&nbsp;&nbsp;Login with Google</button>
+          </div>
+          <button type="submit" class="account-submit-btn">Login</button>
+
+          <div class="account-switch-form">
+            <p>Don't have an account? <a href="#" id="signupSwitch">Sign up</a></p>
+          </div>
+
+        </form>
+
+        <form id="signupForm" style="display: none;">
+          <h2>Sign Up</h2>
+          <div class="account-input-box">
+            <input type="text" name="username" required>
+            <label>Full Name</label>
+          </div>
+          <div class="account-input-box">
+            <input type="email" name="email" required>
+            <label>Email</label>
+          </div>
+          <div class="account-input-box">
+            <input type="password" name="password" required>
+            <label>Password</label>
+          </div>
+          <button type="submit" class="account-submit-btn">Sign Up</button>
+
+          <div class="account-switch-form">
+            <p>Already have an account? <a href="#" id="loginSwitch">Login</a></p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class="account-image-container">
+      <img src="https://via.placeholder.com/600" alt="Form Image">
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signupSwitch').addEventListener('click', function (event) {
+      event.preventDefault(); // Prevent the default anchor link behavior
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'block';
+    });
+
+    document.getElementById('loginSwitch').addEventListener('click', function (event) {
+      event.preventDefault(); // Prevent the default anchor link behavior
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'block';
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const email = event.target.email.value;
+      const password = event.target.password.value;
+
+      fetch('http://localhost:8081/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const username = event.target.username.value;
+      const email = event.target.email.value;
+      const password = event.target.password.value;
+
+      fetch('http://localhost:8081/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, email, password })
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    });
+  </script>
+
+</body>
+
+</html>
