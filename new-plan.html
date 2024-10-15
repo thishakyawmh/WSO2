@@ -75,10 +75,16 @@
 
         <!-- Type of Day Out and Location Preferences (2 items per row) -->
         <div class="form-row">
+            
             <div class="form-group">
-                <label for="day-out-type">Type of Day Out</label>
+                <label for="location">Location Preferences</label>
+                    <input type="text" id="autocomplete" name="plan-name" required placeholder="Search Your Location">
+            </div>
+
+            <div class="form-group">
+                <label for="day-out-type">Place Type</label>
                 <select id="type" name="day_out_type" required>
-                    <option value="" disabled selected>Select type of the day</option>
+                    <option value="" disabled selected>Select Place type</option>
                     <option id="restaurant" value="restaurant">Restaurant</option>
                     <option id="hotel" value="hotel">Hotel</option>
                     <option id="cafe" value="cafe">Cafe</option>
@@ -93,11 +99,6 @@
                     <option id="supermarket" value="supermarket">Supermarket</option>
                 </select>
             </div>
-
-            <div class="form-group">
-                <label for="location">Location Preferences</label>
-                    <input type="text" id="autocomplete" name="plan-name" required placeholder="Search Your Location">
-            </div>
         </div>
 
         <br>
@@ -110,7 +111,7 @@
         <table class="table table-bordered table-striped" id="FinalPlaces"></table>
         <!-- Submit Button (Full row) -->
         <div class="form-group-button">
-            <button type="submit" class="btn"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Generate Plan</button>
+            <button type="button" class="btn" id="submitButton"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Generate Plan</button>
             <button type="reset" class="btn">Clear My Choices</button>
 
         </div>
@@ -118,10 +119,11 @@
     </form>
 </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.js" integrity="sha512-luUnkeG+uabiT2pZdi5ME5uADvq+FpDs2fK5V0nVXrHCND9F077fKaE9W//oJvGnWSmwQmCau63A6s3um1NZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="script.js"></script>
 <script
       async
-      src="https://maps.googleapis.com/maps/api/js?key=!!!API-KEY!!!&libraries=places,maps,marker&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAubBHFbGyBeargjh-JlfaxUWlt_GBmNco&libraries=places,maps,marker&callback=initMap"
 ></script>
 </html>

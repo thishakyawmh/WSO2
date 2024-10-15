@@ -235,6 +235,47 @@ function searchNearbyPlaces(){
         }
     }
 }
+// Get the input elements
+const plannameInput = document.getElementById('plan-name');
+const dateInput = document.getElementById('date');
+const startTimeInput = document.getElementById('start-time');
+const returnTimeInput = document.getElementById('return-time');
+const participantsInput = document.getElementById('participants');
+const budgetInput = document.getElementById('budget');
+const LocationInput = document.getElementById('autocomplete');
+
+function pushData() {
+    let data = {
+        planName: plannameInput.value,
+        date: dateInput.value,
+        startTime: startTimeInput.value,
+        returnTime: returnTimeInput.value,
+        participants: participantsInput.value,
+        budget: budgetInput.value,
+        Location: LocationInput.value
+    };
+
+    final.push(data);
+
+    //final to json format
+    const finalJSON = JSON.stringify(final);
+    // Log the array to the console (for debugging purposes)
+    console.log(finalJSON);
+
+    //Connecting DB
+    axios.post("http://localhost:9090/plans/plans",{
+        plan: finalJSON
+    })
+    .then((result) => {
+        console.log(result.data);
+    }).catch((err) => {
+        console.log(err);
+    });
+}
+
+// Add event listeners to detect changes
+submitButton.addEventListener('click', pushData);
+
 function createMaker(place,length){
     const placeObj = {};
     let table = document.getElementById("places");
@@ -292,26 +333,27 @@ function createMaker(place,length){
     console.log(place);
 }
 
-function incrementCount(id, targetValue, duration) {
-    let currentValue = 0;
-    const incrementStep = Math.ceil(targetValue / (duration / 10)); // Calculate step size
 
-    const counter = setInterval(() => {
-        currentValue += incrementStep;
-        if (currentValue >= targetValue) {
-            currentValue = targetValue;
-            clearInterval(counter); // Stop the interval when the target is reached
-            document.getElementById(id).innerText = currentValue.toLocaleString() + '+'; // Append "+" after reaching target
-        } else {
-            document.getElementById(id).innerText = currentValue.toLocaleString(); // Format the number
-        }
-    }, 10); // Interval time in milliseconds
-}
+// function incrementCount(id, targetValue, duration) {
+//     let currentValue = 0;
+//     const incrementStep = Math.ceil(targetValue / (duration / 10)); // Calculate step size
 
-// Run the function for both live user count and total plans
-document.addEventListener("DOMContentLoaded", function() {
-    incrementCount('live-user-count', 1500, 2000); // 1500 users in 2 seconds
-    incrementCount('total-plans', 5000, 2500); // 5000 plans in 2.5 seconds
-});
+//     const counter = setInterval(() => {
+//         currentValue += incrementStep;
+//         if (currentValue >= targetValue) {
+//             currentValue = targetValue;
+//             clearInterval(counter); // Stop the interval when the target is reached
+//             document.getElementById(id).innerText = currentValue.toLocaleString() + '+'; // Append "+" after reaching target
+//         } else {
+//             document.getElementById(id).innerText = currentValue.toLocaleString(); // Format the number
+//         }
+//     }, 10); // Interval time in milliseconds
+// }
+
+// // Run the function for both live user count and total plans
+// document.addEventListener("DOMContentLoaded", function() {
+//     incrementCount('live-user-count', 1500, 2000); // 1500 users in 2 seconds
+//     incrementCount('total-plans', 5000, 2500); // 5000 plans in 2.5 seconds
+// });
 
 
