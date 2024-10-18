@@ -78,6 +78,7 @@ function addPlace(id){
     function addfunc(item) {
         if(item.name === id){
 
+            //!!!!!!!!!!!!!!!!!!First Table Start!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             let table = document.getElementById("FinalPlaces");
             let row = table.insertRow();
             let cell1 = row.insertCell(0);
@@ -143,7 +144,7 @@ function addPlace(id){
                 popupContent.open(map, marker)
             }
             })(marker)
-        )
+        )//!!!!!!!!!!!!!!!!!!First Table End!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         };
     }
 }
@@ -239,6 +240,7 @@ function searchNearbyPlaces(){
 }
 
 function createMaker(place,length){
+    //!!!!!!!!!!!!!!!!!!Second Table Start!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     const placeObj = {};
     let table = document.getElementById("places");
     let row = table.insertRow();
@@ -293,6 +295,7 @@ function createMaker(place,length){
     placeObj.geometry = place.geometry;
     allPlaces.push(placeObj);
     console.log(place);
+    //!!!!!!!!!!!!!!!!!!Second Table Start!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 // Get the input elements
