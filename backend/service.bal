@@ -29,12 +29,12 @@ service /plans on new http:Listener(9090) {
         self.Plandb = check mongoDb->getDatabase("Plans_DB");
     }
 
-    resource function post plans(NewPlan newPlan) returns Plan|error {
+    resource function post plans(NewPlan newPlan) returns string|error {
         string id = uuid:createType1AsString();
         Plan plan = {id, ...newPlan};
         mongodb:Collection plans = check self.Plandb->getCollection("Plans");
         check plans->insertOne(plan);
-        return plan;
+        return id;
     }
 
     resource function get plans() returns Plan[]|error {
