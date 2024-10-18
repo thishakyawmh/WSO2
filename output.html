@@ -30,14 +30,14 @@
                             <span class="output-label" >Plan Name</span>
                             <div class="output-image-placeholder"><i class="fa-solid fa-signature"></i></div>
                         </div>
-                        <div class="output-value" id="plan_name"></div>
+                        <div class="output-value" id="plan_name">Hello</div>
                     </div>
                     <div class="output-item" style="background:linear-gradient(135deg, #cc0101, #ff3838);">
                         <div class="output-item-header">
                             <span class="output-label">Date & Time</span>
                             <div class="output-image-placeholder"><i class="fa-solid fa-calendar-days"></i></div>
                         </div>
-                        <div class="output-value" id="dateTime"></div>
+                        <div class="output-value" id="dateTime">..</div>
                     </div>
                 </div>
                 <div class="output-overview-row">
@@ -46,14 +46,14 @@
                             <span class="output-label">Location</span>
                             <div class="output-image-placeholder"><i class="fa-solid fa-location-dot"></i></div>
                         </div>
-                        <div class="output-value" id="location"></div>
+                        <div class="output-value" id="location">Ella</div>
                     </div>
                     <div class="output-item" style="background:linear-gradient(135deg, #0a772e, #1cb953);">
                         <div class="output-item-header">
                             <span class="output-label">No. of Participants</span>
                             <div class="output-image-placeholder"><i class="fa-solid fa-user-group"></i></div>
                         </div>
-                        <div class="output-value" id="participants"></div>
+                        <div class="output-value" id="participants">2</div>
                     </div>
                 </div>
                 <div class="output-overview-row">
@@ -87,9 +87,9 @@
             <div class="output-section">
                 <h2 class="output-section-title">Weather & Transportation</h2>
                 <div class="output-weather-transport">
-                    <div class="output-weather">
-                        <img src="weather-images/cloudy.png">
-                        <p class="weather">Sunny, 25°</p>
+                    <div class="output-weather" id="weather-output">
+                        <img src="weather-images/cloudy.png" alt="Weather Icon" id="weather-icon">
+                        <p class="weather" id="weather-text">Sunny, 25°</p>
                     </div>
                     <div class="output-transport">
                         <p>Transportation Modes</p>
@@ -136,10 +136,10 @@
     <script src="outScript.js"></script>
     <script
       async
-      src="https://maps.googleapis.com/maps/api/js?key=!!APIKEY!!&libraries=places,maps,marker&callback=initMap"></script>
+      src="https://maps.googleapis.com/maps/api/js?key=!!!API!!&libraries=places,maps,marker&callback=initMap"></script>
 
 
-      
+
 <script>
     const activityContainer = document.querySelector('.activity-container');
 

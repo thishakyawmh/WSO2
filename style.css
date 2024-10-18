@@ -719,7 +719,7 @@ button.btn:hover {
 .account-input-box input:not(:placeholder-shown) + label {
     top: -20px;
     font-size: 14px;
-    color: #160db8;
+    color: #1f1f1f;
 }
 
 /* Button styling */
@@ -727,7 +727,7 @@ button.btn:hover {
     width: 100%;
     padding: 12px;
     border: none;
-    background-color: #6c63ff;
+    background-color: #262626;
     color: white;
     border-radius: 5px;
     font-size: 18px;
@@ -737,7 +737,7 @@ button.btn:hover {
 
 /* Button hover effect */
 .account-submit-btn:hover, .account-google-btn button:hover {
-    background-color: #574fe3;
+    background-color: #0620b8;
 }
 
 .account-google-btn i{
@@ -759,7 +759,7 @@ button.btn:hover {
 /* Image container */
 .account-image-container {
     width: 50%;
-    background-color: #6c63ff;
+    background-color: #262626;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -845,11 +845,33 @@ button.btn:hover {
 }
 
 #map{
-    margin: 10px auto;
+    margin: 10px auto 50px auto;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: poppins, sans-serif;
+    margin-bottom: 50px;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    border: 5px solid #ddd;
 }
 
 
 
+.styled-table tbody tr:hover {
+    cursor: pointer;
+}
 
 
 /* Responsive adjustments */
