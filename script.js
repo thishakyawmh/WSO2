@@ -112,7 +112,7 @@ function addPlace(id){
                     //Get distance and time
                     cell4.innerHTML = 
                        `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}
-                        <br> <a href="#map" id="dr${item.name}" onclick="viewDirection(this.id)">View on map</a>`
+                        <br> <a href="#map" id="dr${item.name}" onclick="viewDirection(this.id)">View Route</a>`
                     }
             });
 
@@ -228,7 +228,9 @@ function searchNearbyPlaces(){
     function callback(results, status){
         if(status === google.maps.places.PlacesServiceStatus.OK){
             console.log(results.length);
-            results.sort(function(a, b){return b.rating - a.rating});
+            results.sort(function(a, b){return b.user_ratings_total
+                - a.user_ratings_total
+            });
             for(let i = 0; i < results.length; i++){
                 createMaker(results[i]);
             }
@@ -278,7 +280,7 @@ function createMaker(place,length){
             //Get distance and time
             cell4.innerHTML = 
                 `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}
-                <br> <a href="#map" id="da${place.name}" onclick="viewDirection(this.id)">View on map</a>`
+                <br> <a href="#map" id="da${place.name}" onclick="viewDirection(this.id)">View Route</a>`
             placeObj.distanceResult = result;
             }
         else{

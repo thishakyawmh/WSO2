@@ -27,9 +27,9 @@
         <table class="previous-plan-table">
             <thead>
                 <tr>
-                    <th>Plan ID</th>
                     <th>Plan Name</th>
-                    <th>Created Date</th>
+                    <th>Location</th>
+                    <th>Date</th>
                     <th>Open from here</th>
                 </tr>
             </thead>
@@ -39,41 +39,7 @@
         </table>
     </div>
 
-    <script>
-        // Example data from the database (replace this with actual data from the backend)
-const plans = [
-    { id: '101', name: 'Plan Delta', date: '2024-10-11' },
-    { id: '102', name: 'Plan Epsilon', date: '2024-10-12' }
-];
-
-// Function to dynamically populate table rows
-function populatePlans() {
-    const tbody = document.getElementById('previous-plan-tbody');
-
-    plans.forEach(plan => {
-        const row = document.createElement('tr');
-
-        row.innerHTML = `
-            <td>${plan.id}</td>
-            <td>${plan.name}</td>
-            <td>${plan.date}</td>
-            <td><a href="#" class="open-cell" onclick="openPlan('${plan.id}')">Open</a></td>
-        `;
-
-        tbody.appendChild(row);
-    });
-}
-
-// Function to handle "Open" button click (modify to your needs)
-function openPlan(id) {
-    alert(`Opening plan with ID: ${id}`);
-}
-
-// Populate the table on page load
-window.onload = populatePlans;
-
-    </script>
-
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.js" integrity="sha512-luUnkeG+uabiT2pZdi5ME5uADvq+FpDs2fK5V0nVXrHCND9F077fKaE9W//oJvGnWSmwQmCau63A6s3um1NZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="previous.js"></script>
 </body>
 </html>

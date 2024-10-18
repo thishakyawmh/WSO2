@@ -1,19 +1,9 @@
 let planArr = [];
 
 let map,position,directionsService,directionsDisplay,Home_location;
-let allPlaces = [];
-let final = [];
 
 function viewPlace(id){
-    const check = id.slice(0,2);
-    id = id.slice(2,);
-    console.log(id);
-    if(check === 'va'){
-        allPlaces.forEach(vifunc);
-    }
-    else{
-        final.forEach(vifunc);
-    }
+    planArr.forEach(vifunc);
 
     function vifunc(item){
         if(item.name === id){
@@ -34,28 +24,23 @@ function viewPlace(id){
 }
 
 function viewDirection(id){
-    const check = id.slice(0,2);
-    id = id.slice(2,);
-    if(check === 'da'){
-        allPlaces.forEach(dfunc);
-    }
-    else{
-        final.forEach(dfunc);
-    }
+    planArr.forEach(dfunc);
 
     function dfunc(item){
-        let request = {
-            origin:Home_location,
-            destination:item.geometry.location,
-            travelMode:google.maps.TravelMode.DRIVING,//WALKING,BYCYCLING,TRANSIT
-            unitSystem:google.maps.UnitSystem.METRIC,
-        }
-        directionsService.route(request,function(result,status){
-            if(status == google.maps.DirectionsStatus.OK){
-                    directionsDisplay.setDirections(result);
-                }
+        if(item.name === id){
+            let request = {
+                origin:Home_location,
+                destination:item.geometry.location,
+                travelMode:google.maps.TravelMode.DRIVING,//WALKING,BYCYCLING,TRANSIT
+                unitSystem:google.maps.UnitSystem.METRIC,
             }
-        )
+            directionsService.route(request,function(result,status){
+                if(status == google.maps.DirectionsStatus.OK){
+                        directionsDisplay.setDirections(result);
+                    }
+                }
+            )
+        }
     }
 }
 
@@ -123,6 +108,7 @@ function fetchPlanData(planId) {
 
 function processPlanData(planArr) {
     const plan_overview =  planArr[planArr.length-1]
+    console.log(planArr);
     console.log('Processing Plan Data:', plan_overview);
 
     document.getElementById('plan_name').innerHTML = plan_overview.planName;
@@ -139,7 +125,7 @@ function processPlanData(planArr) {
                 let table = document.getElementById("places");
                 let row = table.insertRow();
                 let cell1 = row.insertCell(0);
-                cell1.innerHTML = `${item.name} <br> <a href="#map" id="vr${item.name}" onclick="viewPlace(this.id)">View on map</a>`;
+                cell1.innerHTML = `${item.name} <br> <a href="#map" id="${item.name}" onclick="viewPlace(this.id)">View on map</a>`;
                 if (item.photo){
                     let cell2 = row.insertCell(1);
                     cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${item.photo}"/>`;
@@ -170,7 +156,7 @@ function processPlanData(planArr) {
                         //Get distance and time
                         cell4.innerHTML = 
                            `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}
-                            <br> <a href="#map" id="dr${item.name}" onclick="viewDirection(this.id)">View on map</a>`
+                            <br> <a href="#map" id="${item.name}" onclick="viewDirection(this.id)">View Route</a>`
                         }
                 });
                 
