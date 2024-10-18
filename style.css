@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: rgba(30,31,34,255);
+    background-color: #f2f4f8;
     font-family: "Poppins", sans-serif;
     overflow: auto; /* Enable scrolling */
 }
@@ -238,17 +238,14 @@ input[type="text"], input[type="date"], input[type="time"], input[type="number"]
     max-width: 100%;
     margin: 30px auto;
     padding: 20px 70px;
-    background-color: #fff;
+    background-color: rgba(30,31,34,255);
 }
 
 h2 {
     text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-.container hr{
-    margin-bottom: 30px;
+    font-size: 30px;
+    color: #ffffff;
+    margin: 10px auto 10px auto;
 }
 
 /* Form styling */
@@ -270,10 +267,7 @@ form {
     margin-right: 15px;
 }
 
-/* Remove the right margin for the last form-group in a row */
-.form-group:last-child {
-    margin-right: 0;
-}
+
 
 /* Input and select field styling */
 input[type="text"], 
@@ -288,12 +282,77 @@ select {
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
-    border: 2px solid #2b502b;
-    font-size: 16px;
+    font-size: 17px;
     box-sizing: border-box;
     font-family: Poppins;
-    background-color: #F5F8FF;
+    background-color: rgba(12,12,14,255);
+    color: #dfdfdf;
 }
+
+input[type="text"]{
+    border: 2px solid rgb(48, 155, 255);
+}
+
+input[type="date"]{
+    border: 2px solid rgb(255, 48, 93);
+}
+
+input[type="time"]{
+    border: 2px solid rgb(48, 255, 100);
+}
+
+input[type="number"]{
+    border: 2px solid rgb(252, 255, 48);
+}
+
+select{
+    border: 2px solid rgb(153, 65, 255);
+}
+
+
+.select-wrapper::after {
+    content: '▼'; /* Custom arrow */
+    position: absolute;
+    right: 10px; /* Position it on the right */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    color: #666; /* Arrow color */
+    pointer-events: none; /* Prevent clicks on the arrow */
+}
+
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.8;
+    filter: invert(0.8);
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1
+  }
+
+  /* Style for the time input indicator */
+input[type="time"]::-webkit-inner-spin-button {
+    display: none; /* Hides the default up/down arrows */
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border-radius: 4px; /* Rounded corners */
+    margin-right: 2px; /* Margin */
+    opacity: 0.8; /* Initial opacity */
+    filter: invert(0.8); /* Invert colors for better visibility */
+}
+
+/* Hover effect for the time picker indicator */
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1; /* Fully opaque on hover */
+}
+
+
 
 
 /* Button styling */
@@ -343,7 +402,7 @@ select {
 /* Form section spacing */
 .form-group label {
     font-size: 16px;
-    color: #262626;
+    color: #ffffff;
     margin-bottom: 5px;
     display: block;
 }
@@ -369,7 +428,7 @@ button.btn:hover {
     margin: 40px 70px;
 }
 .output-title {
-    color: #ffffff;
+    color: #1d1d1d;
     text-align: center;
     font-size: 30px;
     margin-bottom: 10px;
@@ -381,13 +440,13 @@ button.btn:hover {
 }
 .output-section {
     flex: 1;
-    background-color: rgba(12,12,14,255);
+    background-color: (255,255,255,255);   
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;    
     padding: 15px;
 }
 .output-section-title {
-    color: #ffffff;
+    color: #1d1d1d;
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 15px;
@@ -798,6 +857,10 @@ button.btn:hover {
     background: linear-gradient(to right, rgba(30, 31, 34, 0) 0%, rgba(30, 31, 34, 0) 25%, #e6ff04 50%, rgba(30, 31, 34, 0) 75%, rgba(30, 31, 34, 0) 100%); /* Adjust #ff5733 to your desired middle color */
     margin: 20px auto 50px auto;
     width: 25%;
+}
+
+#map{
+    margin: 10px auto;
 }
 
 
