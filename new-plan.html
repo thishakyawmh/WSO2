@@ -101,8 +101,10 @@
 
         <table class="table table-bordered table-striped" id="places"></table>
         <br><br>
-        <label for="FinalPlaces"><h4>Selected Places</h4></label>
-        <table class="table table-bordered table-striped" id="FinalPlaces"></table>
+        <div class="form-group-last">
+            <label for="start-time">Selected Places</label>
+        </div>
+        <table class="table table-bordered table-striped custom-table" id="FinalPlaces"></table>
         <!-- Submit Button (Full row) -->
         <div class="form-group-button">
             <button type="submit" class="btn" id="submitButton"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Generate Plan</button>
@@ -118,6 +120,6 @@
 <script src="script.js"></script>
 <script
       async
-      src="https://maps.googleapis.com/maps/api/js?key=!!API!!&libraries=places,maps,marker&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzVbmkzcosWlrvocjZPWQknFr7auvqqks&libraries=places,maps,marker&callback=initMap"
 ></script>
 </html>

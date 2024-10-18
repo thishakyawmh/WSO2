@@ -199,8 +199,11 @@ h2 {
     margin-bottom: 20px;
 }
 
-.form-group {
+.form-group,
+.form-group-last {
     margin-bottom: 15px;
+    flex: 1;
+    margin-right: 15px;
 }
 
 label {
@@ -238,13 +241,13 @@ input[type="text"], input[type="date"], input[type="time"], input[type="number"]
     max-width: 100%;
     margin: 30px auto;
     padding: 20px 70px;
-    background-color: rgba(30,31,34,255);
+    background-color: #f2f3f5;
 }
 
 h2 {
     text-align: center;
     font-size: 30px;
-    color: #ffffff;
+    color: #1f1f1f;
     margin: 10px auto 10px auto;
 }
 
@@ -260,13 +263,6 @@ form {
     justify-content: space-between;
     margin-bottom: 20px;
 }
-
-/* Form group styling */
-.form-group {
-    flex: 1;
-    margin-right: 15px;
-}
-
 
 
 /* Input and select field styling */
@@ -285,8 +281,8 @@ select {
     font-size: 17px;
     box-sizing: border-box;
     font-family: Poppins;
-    background-color: rgba(12,12,14,255);
-    color: #dfdfdf;
+    background-color: #ffffff;   
+    color: #1f1f1f;
 }
 
 input[type="text"]{
@@ -295,14 +291,16 @@ input[type="text"]{
 
 input[type="date"]{
     border: 2px solid rgb(255, 48, 93);
+    cursor: pointer;
 }
 
 input[type="time"]{
-    border: 2px solid rgb(48, 255, 100);
+    border: 2px solid rgb(23, 155, 56);
+    cursor: pointer;
 }
 
 input[type="number"]{
-    border: 2px solid rgb(252, 255, 48);
+    border: 2px solid rgb(144, 146, 3);
 }
 
 select{
@@ -319,39 +317,6 @@ select{
     color: #666; /* Arrow color */
     pointer-events: none; /* Prevent clicks on the arrow */
 }
-
-
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    border-radius: 4px;
-    margin-right: 2px;
-    opacity: 0.8;
-    filter: invert(0.8);
-  }
-  
-  input[type="date"]::-webkit-calendar-picker-indicator:hover {
-    opacity: 1
-  }
-
-  /* Style for the time input indicator */
-input[type="time"]::-webkit-inner-spin-button {
-    display: none; /* Hides the default up/down arrows */
-}
-
-input[type="time"]::-webkit-calendar-picker-indicator {
-    cursor: pointer; /* Change cursor to pointer on hover */
-    border-radius: 4px; /* Rounded corners */
-    margin-right: 2px; /* Margin */
-    opacity: 0.8; /* Initial opacity */
-    filter: invert(0.8); /* Invert colors for better visibility */
-}
-
-/* Hover effect for the time picker indicator */
-input[type="time"]::-webkit-calendar-picker-indicator:hover {
-    opacity: 1; /* Fully opaque on hover */
-}
-
 
 
 
@@ -402,8 +367,16 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 /* Form section spacing */
 .form-group label {
     font-size: 16px;
-    color: #ffffff;
+    color: #1f1f1f;
     margin-bottom: 5px;
+    display: block;
+}
+
+.form-group-last label {
+    font-size: 25px;
+    color: #1f1f1f;
+    margin-bottom: 25px;
+    text-align: center;
     display: block;
 }
 
@@ -874,6 +847,8 @@ button.btn:hover {
 #map{
     margin: 10px auto;
 }
+
+
 
 
 
