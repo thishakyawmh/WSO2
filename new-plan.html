@@ -27,7 +27,7 @@
 <div class="container">
     <h2>Plan Your Day Out</h2>
     <hr>
-    <form action="submit_plan.php" method="POST">
+    <form id="planForm" action="submit_plan.php" method="POST">
 
         <!-- (2 items per row) -->
         <div class="form-row">
@@ -66,9 +66,9 @@
                 <label for="budget">Budget Range</label>
                 <select id="budget" name="budget" required>
                     <option value="" disabled selected>Select your budget range</option>
-                    <option value="low">Less than 5000 LKR</option>
-                    <option value="medium">5000 LKR - 15,000 LKR</option>
-                    <option value="high">Above 15,000 LKR</option>
+                    <option value="Less than 5000 LKR">Less than 5000 LKR</option>
+                    <option value="5000 LKR - 15,000 LKR">5000 LKR - 15,000 LKR</option>
+                    <option value="Above 15,000 LKR">Above 15,000 LKR</option>
                 </select>
             </div>
         </div>
@@ -111,8 +111,8 @@
         <table class="table table-bordered table-striped" id="FinalPlaces"></table>
         <!-- Submit Button (Full row) -->
         <div class="form-group-button">
-            <button type="button" class="btn" id="submitButton"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Generate Plan</button>
-            <button type="reset" class="btn">Clear My Choices</button>
+            <button type="submit" class="btn" id="submitButton"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Generate Plan</button>
+            <button type="reset" class="btn" id="clearButton">Clear Plan</button>
 
         </div>
 

@@ -235,46 +235,6 @@ function searchNearbyPlaces(){
         }
     }
 }
-// Get the input elements
-const plannameInput = document.getElementById('plan-name');
-const dateInput = document.getElementById('date');
-const startTimeInput = document.getElementById('start-time');
-const returnTimeInput = document.getElementById('return-time');
-const participantsInput = document.getElementById('participants');
-const budgetInput = document.getElementById('budget');
-const LocationInput = document.getElementById('autocomplete');
-
-function pushData() {
-    let data = {
-        planName: plannameInput.value,
-        date: dateInput.value,
-        startTime: startTimeInput.value,
-        returnTime: returnTimeInput.value,
-        participants: participantsInput.value,
-        budget: budgetInput.value,
-        Location: LocationInput.value
-    };
-
-    final.push(data);
-
-    //final to json format
-    const finalJSON = JSON.stringify(final);
-    // Log the array to the console (for debugging purposes)
-    console.log(finalJSON);
-
-    //Connecting DB
-    axios.post("http://localhost:9090/plans/plans",{
-        plan: finalJSON
-    })
-    .then((result) => {
-        console.log(result.data);
-    }).catch((err) => {
-        console.log(err);
-    });
-}
-
-// Add event listeners to detect changes
-submitButton.addEventListener('click', pushData);
 
 function createMaker(place,length){
     const placeObj = {};
@@ -332,6 +292,57 @@ function createMaker(place,length){
     allPlaces.push(placeObj);
     console.log(place);
 }
+
+// Get the input elements
+const plannameInput = document.getElementById('plan-name');
+const dateInput = document.getElementById('date');
+const startTimeInput = document.getElementById('start-time');
+const returnTimeInput = document.getElementById('return-time');
+const participantsInput = document.getElementById('participants');
+const budgetInput = document.getElementById('budget');
+const LocationInput = document.getElementById('autocomplete');
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('submitButton').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // Ensure these variables correctly reference your input elements
+        let plannameInput = document.getElementById('plan-name');
+        let dateInput = document.getElementById('date');
+        let startTimeInput = document.getElementById('start-time');
+        let returnTimeInput = document.getElementById('return-time');
+        let participantsInput = document.getElementById('participants');
+        let budgetInput = document.getElementById('budget');
+        let locationInput = document.getElementById('autocomplete');
+
+        let data = {
+            planName: plannameInput.value,
+            date: dateInput.value,
+            startTime: startTimeInput.value,
+            returnTime: returnTimeInput.value,
+            participants: participantsInput.value,
+            budget: budgetInput.value,
+            location: locationInput.value
+        };
+
+        // Assuming 'final' is a global variable
+        final.push(data);
+        console.log(final);
+        const finalJSON = JSON.stringify(final);
+
+
+        axios.post("http://localhost:9090/plans/plans", { plan: finalJSON })
+        .then((response) => {
+            const planId = response.data; // Ensure the response contains the ID
+            window.location.href = `output.html?id=${planId}`;
+        })
+        .catch((error) => {
+            console.error('Failed to submit plan', error);
+        });
+    });
+});
+
 
 
 // function incrementCount(id, targetValue, duration) {

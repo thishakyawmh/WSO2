@@ -7,7 +7,7 @@ public type Plan record {|
 |};
 
 public type NewPlan record {|
-    json plan;
+    string plan;
 |};
 
 type ErrorDetails record {
