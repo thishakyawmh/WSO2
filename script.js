@@ -317,7 +317,7 @@ function createMaker(place, length) {
         table.style.borderCollapse = "separate";
         table.style.borderSpacing = "15px";
         table.style.backgroundColor = "#f0f0f0";
-        table.style.border = "none";
+        table.style.border = "none";``
         table.style.width = "100%";
         table.style.margin = "auto 50px";
         table.style.borderRadius = "15px";
@@ -494,7 +494,10 @@ document.addEventListener('DOMContentLoaded', function() {
 //     return forecastData.find(forecast => forecast.date === selectedDate);
 // }
 
+
+
 // Event listener for the form submission
+
 // weatherForm.addEventListener('submit', async (event) => {
 //     event.preventDefault();
 

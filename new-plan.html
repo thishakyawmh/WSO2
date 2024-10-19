@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
+
 <body>
 
     <nav class="navbar">
@@ -15,113 +17,116 @@
         </div>
         <div class="nav-button">
             <button id="accountButton"> <i class="fa-solid fa-user">&nbsp;</i> Account</button>
-        </div>   
+        </div>
     </nav>
 
-<!-- Plan a New Day Out Form -->
-<div class="container">
-    <h2>Let's Plan Your Day Out</h2>
-    <hr class="gradient-line">
-    <form id="planForm" action="submit_plan.php" method="POST">
-
-        <!-- (2 items per row) -->
-        <div class="form-row">
-            <div class="form-group">
-                <label for="name-of-the-plan">Name of the Plan</label>
-                <input type="text" id="plan-name" name="plan-name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="date">Date</label>
-                <input type="date" id="date" name="date" required>
-            </div>
-        </div>
-
-        <!-- Time (2 items per row) -->
-        <div class="form-row">
-            <div class="form-group">
-                <label for="start-time">Start Time</label>
-                <input type="time" id="start-time" name="start-time" required>
-            </div>
-
-            <div class="form-group">
-                <label for="return-time">Return Time</label>
-                <input type="time" id="return-time" name="return-time" required>
-            </div>
-        </div>
-
-        <!--  (2 items per row) -->
-        <div class="form-row">
-            <div class="form-group">
-                <label for="participants">Number of People</label>
-                <input type="number" id="participants" name="participants" min="1" required>
-            </div>
-
-            <div class="form-group">
-                <label for="budget">Budget Range</label>
-                <select id="budget" name="budget" required>
-                    <option value="" disabled selected>Select your budget range</option>
-                    <option value="Less than 5000 LKR">Less than 5000 LKR</option>
-                    <option value="5000 LKR - 15,000 LKR">5000 LKR - 15,000 LKR</option>
-                    <option value="Above 15,000 LKR">Above 15,000 LKR</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Type of Day Out and Location Preferences (2 items per row) -->
-        <div class="form-row">
-            
-            <div class="form-group">
-                <label for="location">Location Preferences</label>
-                    <input type="text" id="autocomplete" name="plan-name" required placeholder="Search Your Location">
-            </div>
-
-            <div class="form-group">
-                <label for="day-out-type">Place Type</label>
-                <select id="type" name="day_out_type" required>
-                    <option value="" disabled selected>Select Place type</option>
-                    <option id="restaurant" value="restaurant">Restaurant</option>
-                    <option id="hotel" value="hotel">Hotel</option>
-                    <option id="cafe" value="cafe">Cafe</option>
-                    <option id="bakery" value="bakery">Bakery</option>
-                    <option id="movie_theater" value="movie_theater">Movie Theater</option>
-                    <option id="tourist_attraction" value="tourist_attraction">Tourist Attraction</option>
-                    <option id="park" value="park">Park</option>
-                    <option id="amusement_park" value="amusement_park">Amusement Park</option>
-                    <option id="campground" value="campground">Campground</option>
-                    <option id="museum" value="museum">Museum</option>
-                    <option id="shopping_mall" value="shopping_mall">Shopping Mall</option>
-                    <option id="supermarket" value="supermarket">Supermarket</option>
-                </select>
-            </div>
-        </div>
-
-        <a name="map"></a>
-        <div id="map"></div>
-
-        <table class="table table-bordered table-striped" id="places">
-        </table>
-
-        <br><br>
-        <div class="form-group-last">
-            <label for="start-time">Selected Places</label>
-        </div>
+    <!-- Plan a New Day Out Form -->
+    <div class="container">
+        <h2>Let's Plan Your Day Out</h2>
         <hr class="gradient-line">
-        <table class="table table-bordered table-striped custom-table" id="FinalPlaces"></table>
-        <!-- Submit Button (Full row) -->
-        <div class="form-group-button">
-            <button type="submit" class="btn" id="submitButton"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Generate Plan</button>
-            <button type="reset" class="btn" id="clearButton">Clear Plan</button>
-        </div>
+        <form id="planForm" action="submit_plan.php" method="POST">
 
-    </form>
-</div>
+            <!-- (2 items per row) -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name-of-the-plan">Name of the Plan</label>
+                    <input type="text" id="plan-name" name="plan-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+            </div>
+
+            <!-- Time (2 items per row) -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="start-time">Start Time</label>
+                    <input type="time" id="start-time" name="start-time" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="return-time">Return Time</label>
+                    <input type="time" id="return-time" name="return-time" required>
+                </div>
+            </div>
+
+            <!--  (2 items per row) -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="participants">Number of People</label>
+                    <input type="number" id="participants" name="participants" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Budget Range</label>
+                    <select id="budget" name="budget" required>
+                        <option value="" disabled selected>Select your budget range</option>
+                        <option value="Less than 5000 LKR">Less than 5000 LKR</option>
+                        <option value="5000 LKR - 15,000 LKR">5000 LKR - 15,000 LKR</option>
+                        <option value="Above 15,000 LKR">Above 15,000 LKR</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Type of Day Out and Location Preferences (2 items per row) -->
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="location">Location Preferences</label>
+                    <input type="text" id="autocomplete" name="plan-name" required placeholder="Search Your Location">
+                </div>
+
+                <div class="form-group">
+                    <label for="day-out-type">Place Type</label>
+                    <select id="type" name="day_out_type" required>
+                        <option value="" disabled selected>Select Place type</option>
+                        <option id="restaurant" value="restaurant">Restaurant</option>
+                        <option id="hotel" value="hotel">Hotel</option>
+                        <option id="cafe" value="cafe">Cafe</option>
+                        <option id="bakery" value="bakery">Bakery</option>
+                        <option id="movie_theater" value="movie_theater">Movie Theater</option>
+                        <option id="tourist_attraction" value="tourist_attraction">Tourist Attraction</option>
+                        <option id="park" value="park">Park</option>
+                        <option id="amusement_park" value="amusement_park">Amusement Park</option>
+                        <option id="campground" value="campground">Campground</option>
+                        <option id="museum" value="museum">Museum</option>
+                        <option id="shopping_mall" value="shopping_mall">Shopping Mall</option>
+                        <option id="supermarket" value="supermarket">Supermarket</option>
+                    </select>
+                </div>
+            </div>
+
+            <a name="map"></a>
+            <div id="map"></div>
+
+            <table class="table table-bordered table-striped" id="places">
+            </table>
+
+            <br><br>
+            <div class="form-group-last">
+                <label for="start-time">Selected Places</label>
+            </div>
+            <hr class="gradient-line">
+            <table class="table table-bordered table-striped custom-table" id="FinalPlaces"></table>
+            <!-- Submit Button (Full row) -->
+            <div class="form-group-button">
+                <button type="submit" class="btn" id="submitButton"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Generate
+                    Plan</button>
+                <button type="reset" class="btn" id="clearButton">Clear Plan</button>
+            </div>
+
+        </form>
+    </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.js" integrity="sha512-luUnkeG+uabiT2pZdi5ME5uADvq+FpDs2fK5V0nVXrHCND9F077fKaE9W//oJvGnWSmwQmCau63A6s3um1NZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.js"
+    integrity="sha512-luUnkeG+uabiT2pZdi5ME5uADvq+FpDs2fK5V0nVXrHCND9F077fKaE9W//oJvGnWSmwQmCau63A6s3um1NZmg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="script.js"></script>
 <script
       async
       src="https://maps.googleapis.com/maps/api/js?key=!!APIKEY!!&libraries=places,maps,marker&callback=initMap"
-></script>
+        ></script>
 </html>
