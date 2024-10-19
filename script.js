@@ -240,64 +240,102 @@ function searchNearbyPlaces(){
     }
 }
 
-function createMaker(place,length){
-    //!!!!!!!!!!!!!!!!!!Second Table Start!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+function createMaker(place, length) {
     const placeObj = {};
     let table = document.getElementById("places");
+
+    // Add table heading if it does not exist
+    if (table.rows.length === 0) {
+        let header = table.createTHead();
+        let row = header.insertRow(0);
+        row.style.backgroundColor = "#f2f2f2"; // Example background color for the header
+
+        let headers = ["Place Name", "Photo", "Rating", "Distance & Duration", "Action"];
+        headers.forEach(headerText => {
+            let cell = document.createElement("th");
+            cell.innerHTML = headerText;
+            row.appendChild(cell);
+            cell.style.width = "20%"; 
+            cell.style.backgroundColor = "#262626";
+            cell.style.color = "white";
+            cell.style.padding = "12px";
+            cell.style.textAlign = "center";
+            cell.style.fontWeight = "bold";
+            cell.style.fontSize = "20px";
+            cell.style.width = "20%"; // Set equal width for each column
+        });
+
+        // Apply table styles
+        table.style.borderCollapse = "separate";
+        table.style.borderSpacing = "15px";
+        table.style.backgroundColor = "#f0f0f0";
+        table.style.border = "none";
+        table.style.width = "100%";
+        table.style.margin = "auto 50px";
+        table.style.borderRadius = "15px";
+        table.style.marginRight = "auto";
+        table.style.marginLeft = "auto";
+
+    }
+
+    // Add rows with place data
     let row = table.insertRow();
+    
+    // Set common style for table cells
+    function styleCell(cell) {
+        cell.style.backgroundColor = "#ffffff";
+        cell.style.padding = "12px";
+        cell.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)";
+        cell.style.textAlign = "center";
+        cell.style.fontSize = "16px";
+    }
+
     let cell1 = row.insertCell(0);
-    cell1.innerHTML = `${place.name} <br> <a href="#map" id="va${place.name}" onclick="viewPlace(this.id)">View on map</a>`;
+    cell1.innerHTML = `${place.name} <br> <a href="#map" id="va${place.name}" onclick="viewPlace(this.id)" style="padding: 10px; background-color: #FF5349; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View on map</a>`;
+    styleCell(cell1);
     placeObj.name = place.name;
-    if (place.photos){
-        let photoUrl = place.photos[0].getUrl();
-        let cell2 = row.insertCell(1);
-        cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`
-        placeObj.photo = photoUrl;
-    }
-    else{
-        let photoUrl = "https://via.placeholder.com/150";
-        let cell2 = row.insertCell(1);
-        cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`
-    }
-    if(place.rating){
-        let cell3 = row.insertCell(2);
-        cell3.innerHTML = `${place.rating}/5 , ${place.user_ratings_total} Reviews`;
-        placeObj.rating = place.rating;
-        placeObj.user_ratings_total = place.user_ratings_total
-    }
-    else{
-        let cell3 = row.insertCell(2);
-        cell3.innerHTML = `No Ratings`;
-    }
+
+    let cell2 = row.insertCell(1);
+    let photoUrl = place.photos ? place.photos[0].getUrl() : "https://via.placeholder.com/150";
+    cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`;
+    styleCell(cell2);
+    placeObj.photo = photoUrl;
+
+    let cell3 = row.insertCell(2);
+    cell3.innerHTML = place.rating ? `${place.rating}/5 , ${place.user_ratings_total} Reviews` : "No Ratings";
+    styleCell(cell3);
 
     let cell4 = row.insertCell(3);
     let request = {
-        origin:Home_location,
+        origin: Home_location,
         destination: place.geometry.location,
-        travelMode:google.maps.TravelMode.DRIVING,//WALKING,BYCYCLING,TRANSIT
-        unitSystem:google.maps.UnitSystem.METRIC,
-    }
+        travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
+        unitSystem: google.maps.UnitSystem.METRIC,
+    };
 
-    directionsService.route(request,function(result,status){
-        if(status == google.maps.DirectionsStatus.OK){
-            //Get distance and time
-            cell4.innerHTML = 
+    directionsService.route(request, function (result, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            // Get distance and time
+            cell4.innerHTML =
                 `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}
-                <br> <a href="#map" id="da${place.name}" onclick="viewDirection(this.id)">View Route</a>`
+                <br> <a href="#map" id="da${place.name}" onclick="viewDirection(this.id)" style="padding: 10px; background-color: darkblue; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View Route</a>`;
             placeObj.distanceResult = result;
-            }
-        else{
-            console.log("Distance result fetch Fail!")
+        } else {
+            console.log("Distance result fetch Fail!");
         }
-        });
+    });
+    styleCell(cell4);
 
     let cell5 = row.insertCell(4);
     cell5.innerHTML = `<button type="button" id="${placeObj.name}" onclick="addPlace(this.id)" class="btn btn-primary">ADD</button>`;
+    styleCell(cell5);
     placeObj.geometry = place.geometry;
     allPlaces.push(placeObj);
-    console.log(place);
-    //!!!!!!!!!!!!!!!!!!Second Table Start!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
+
+
+
+
 
 // Get the input elements
 const plannameInput = document.getElementById('plan-name');
