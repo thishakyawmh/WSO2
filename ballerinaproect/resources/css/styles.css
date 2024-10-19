@@ -35,11 +35,25 @@ body {
 }
 
 
+.logo {
+    display: flex;
+    justify-content: center; /* Center the logo horizontally */
+    align-items: center;     /* Center the logo vertically if needed */
+    height: 100%;            /* Adjust based on your navbar height */
+}
+
 .logo h1 {
     color: white;
     font-size: 32px;
     font-weight: bold;
+    text-align: center;
+    letter-spacing: 5px; /* Add space between letters */
 }
+
+.logo a {
+    text-decoration: none; /* Remove underline from the link */
+}
+
 
 .nav-links {
     list-style: none;

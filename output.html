@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
+
     <nav class="navbar">
         <div class="logo">
-            <h1>Outing</h1>
+            <a href="index.html">
+                <h1>OUTING_</h1>
+            </a>
         </div>
         <div class="nav-button">
-            <button id="accountButton"> <i class="fa-solid fa-user">&nbsp;</i> Account</button>
+            <button id="accountButton" onclick="redirectToPage('previous_plans.html')"> <i class="fa-solid fa-clock-rotate-left"></i> </button>
         </div>   
     </nav>
 
@@ -136,7 +139,7 @@
     <script src="outScript.js"></script>
     <script
       async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzVbmkzcosWlrvocjZPWQknFr7auvqqks&libraries=places,maps,marker&callback=initMap"></script>
+      src="https://maps.googleapis.com/maps/api/js?key=!!!&libraries=places,maps,marker&callback=initMap"></script>
 
 <script>
     const activityContainer = document.querySelector('.activity-container');

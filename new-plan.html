@@ -13,11 +13,13 @@
 
     <nav class="navbar">
         <div class="logo">
-            <h1>Outing</h1>
+            <a href="index.html">
+                <h1>OUTING_</h1>
+            </a>
         </div>
         <div class="nav-button">
-            <button id="accountButton"> <i class="fa-solid fa-user">&nbsp;</i> Account</button>
-        </div>
+            <button id="accountButton" onclick="redirectToPage('previous_plans.html')"> <i class="fa-solid fa-clock-rotate-left"></i> </button>
+        </div>   
     </nav>
 
     <!-- Plan a New Day Out Form -->
@@ -119,14 +121,22 @@
 
         </form>
     </div>
-</body>
+
+    <script>
+        function redirectToPage(url) {
+    window.location.href = url; // Redirect to the given URL
+}
+    </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.js"
-    integrity="sha512-luUnkeG+uabiT2pZdi5ME5uADvq+FpDs2fK5V0nVXrHCND9F077fKaE9W//oJvGnWSmwQmCau63A6s3um1NZmg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+integrity="sha512-luUnkeG+uabiT2pZdi5ME5uADvq+FpDs2fK5V0nVXrHCND9F077fKaE9W//oJvGnWSmwQmCau63A6s3um1NZmg=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="script.js"></script>
 <script
-      async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzVbmkzcosWlrvocjZPWQknFr7auvqqks&libraries=places,maps,marker&callback=initMap"
-        ></script>
+  async
+  src="https://maps.googleapis.com/maps/api/js?key=!!!!&libraries=places,maps,marker&callback=initMap"></script>
+
+</body>
+
 </html>

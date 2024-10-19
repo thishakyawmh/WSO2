@@ -125,99 +125,111 @@ function processPlanData(planArr) {
                 const placeObj = {};
                 placeObj.name = item.name;
                 placeObj.types = item.types;
-                FilteredPlan.push(placeObj);
                 let table = document.getElementById("places");
 
-            // Check if the header already exists
-            if (table.tHead === null) { // If there is no thead, create one
-                let headerRow = table.createTHead().insertRow(0);
-                let headers = ["Place Name", "Photo", "Rating", "Distance & Duration"];
-                headers.forEach(headerText => {
-                    let cell = document.createElement("th");
-                    cell.innerHTML = headerText;
-                    headerRow.appendChild(cell);
-                    cell.style.width = "20%"; 
-                    cell.style.backgroundColor = "#262626"; // Header background color
-                    cell.style.color = "white"; // Header text color
-                    cell.style.padding = "12px"; // Header padding
-                    cell.style.textAlign = "center"; // Header text alignment
-                    cell.style.fontWeight = "bold"; // Header font weight
-                    cell.style.fontSize = "20px"; // Header font size
-                });
-            }
-
-            let row = table.insertRow();
-            
-            // Apply table styles
-            table.style.borderCollapse = "separate";
-            table.style.borderSpacing = "15px";
-            table.style.backgroundColor = "#f0f0f0"; // Table background color
-            table.style.border = "none"; // Table border
-            table.style.width = "fit-content"; // Table width
-            table.style.margin = "auto 50px"; // Table margin
-            table.style.borderRadius = "15px"; // Table border radius
-            table.style.marginRight = "auto";
-            table.style.marginLeft = "auto";
-
-            // Set common style for table cells
-            function styleCell(cell) {
-                cell.style.backgroundColor = "#ffffff"; // Cell background color
-                cell.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)"; // Cell shadow
-                cell.style.textAlign = "center"; // Cell text alignment
-                cell.style.fontSize = "16px"; // Cell font size
-                cell.style.padding = "12px"; // Cell padding
-            }
-
-            let cell1 = row.insertCell(0);
-            cell1.innerHTML = `${item.name} <br> <a href="#map" id="${item.name}" onclick="viewPlace(this.id)" style="padding: 10px; background-color: #FF5349; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View on map</a>`;
-            styleCell(cell1);
-
-            let cell2 = row.insertCell(1);
-            let photoUrl = item.photo ? item.photo : "https://via.placeholder.com/150";
-            cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';"/>`;
-            styleCell(cell2);
-
-            let cell3 = row.insertCell(2);
-            cell3.innerHTML = item.rating ? `${item.rating}/5 , ${item.user_ratings_total} Reviews` : `No Ratings`;
-            styleCell(cell3);
-
-            let cell4 = row.insertCell(3);
-            let request = {
-                origin: Home_location,
-                destination: item.geometry.location,
-                travelMode: google.maps.TravelMode.DRIVING, // WALKING, BYCYCLING, TRANSIT
-                unitSystem: google.maps.UnitSystem.METRIC,
-            };
-            directionsService.route(request, function(result, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    // Get distance and time
-                    cell4.innerHTML = `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}<br> <a href="#map" id="${item.name}" onclick="viewDirection(this.id)" style="padding: 10px; background-color: darkblue; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View Route</a>`;
+                  
+                if (table.tHead === null) { // If there is no thead, create one
+                    let headerRow = table.createTHead().insertRow(0);
+                    let headers = ["Place Name", "Photo", "Rating", "Distance & Duration"];
+                    headers.forEach(headerText => {
+                        let cell = document.createElement("th");
+                        cell.innerHTML = headerText;
+                        headerRow.appendChild(cell);
+                        cell.style.width = "20%"; 
+                        cell.style.backgroundColor = "#262626"; // Header background color
+                        cell.style.color = "white"; // Header text color
+                        cell.style.padding = "12px"; // Header padding
+                        cell.style.textAlign = "center"; // Header text alignment
+                        cell.style.fontWeight = "bold"; // Header font weight
+                        cell.style.fontSize = "20px"; // Header font size
+                    });
                 }
-            });
-            styleCell(cell4);
+                
 
-            const marker = new google.maps.Marker({
-                map: map,
-                position: item.geometry.location,
-                title: item.name,
-            });
-            let bounds = new google.maps.LatLngBounds();
-            if (!item.geometry) {
+                    // Apply table styles
+                         table.style.borderCollapse = "separate";
+                         table.style.borderSpacing = "15px";
+                         table.style.backgroundColor = "#f0f0f0"; // Table background color
+                         table.style.border = "none"; // Table border
+                         table.style.width = "fit-content"; // Table width
+                         table.style.margin = "auto 50px"; // Table margin
+                         table.style.borderRadius = "15px"; // Table border radius
+                         table.style.marginRight = "auto";
+                         table.style.marginLeft = "auto";
+
+
+                let row = table.insertRow();
+                function styleCell(cell) {
+                    cell.style.backgroundColor = "#ffffff"; 
+                    cell.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)"; 
+                    cell.style.textAlign = "center"; 
+                    cell.style.fontSize = "16px"; 
+                    cell.style.padding = "12px"; 
+                }
+
+                let cell1 = row.insertCell(0);
+                cell1.innerHTML = `${item.name} <br> <a href="#map" id="vr${item.name}" onclick="viewPlace(this.id)" style="padding: 10px; background-color: #FF5349; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View on map</a>`;
+                styleCell(cell1);
+                
+                if (item.photo){
+                    let cell2 = row.insertCell(1);
+                    cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${item.photo}"/>`;
+                    styleCell(cell2);
+
+                }
+                else{
+                    let photoUrl = "https://via.placeholder.com/150";
+                    let cell2 = row.insertCell(1);
+                    cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`;
+                }
+                if(item.rating){
+                    let cell3 = row.insertCell(2);
+                    cell3.innerHTML = `${item.rating}/5 , ${item.user_ratings_total} Reviews`;
+                }
+                else{
+                    let cell3 = row.insertCell(2);
+                    cell3.innerHTML = item.rating ? `${item.rating}/5 , ${item.user_ratings_total} Reviews` : `No Ratings`;
+                }
+    
+                let cell4 = row.insertCell(3);
+                let request = {
+                    origin:Home_location,
+                    destination: item.geometry.location,
+                    travelMode:google.maps.TravelMode.DRIVING,//WALKING,BYCYCLING,TRANSIT
+                    unitSystem:google.maps.UnitSystem.METRIC,
+                }
+                directionsService.route(request,function(result,status){
+                    if(status == google.maps.DirectionsStatus.OK){
+                        //Get distance and time
+                        cell4.innerHTML = `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}
+                                           <br> <a href="#map" id="dr${item.name}" onclick="viewDirection(this.id)" style="padding: 10px; background-color: darkblue; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View Route</a>`;
+                        }
+                });
+                
+                const marker = new google.maps.Marker({
+                    map: map,
+                    position: item.geometry.location,
+                    title: item.name,
+                });
+                let bounds = new google.maps.LatLngBounds();
+                if (!item.geometry) {
                 return;
-            }
-            if (item.geometry.viewport) {
+                }
+                if (item.geometry.viewport) {
                 bounds.union(item.geometry.viewport);
-            } else {
+                } else {
                 bounds.extend(item.geometry.viewport);
-            }
-            map.fitBounds(bounds);
-            const popupContent = new google.maps.InfoWindow();
-            google.maps.event.addListener(marker, 'click', (function(marker) {
-                return function() {
-                    popupContent.setContent(item.name);
-                    popupContent.open(map, marker);
-                };
-            })(marker));
+                }
+                map.fitBounds(bounds);
+                const popupContent = new google.maps.InfoWindow();
+                google.maps.event.addListener(marker, 'click', (function(marker) {
+                    return function(){
+                    popupContent.setContent(item.name)
+                    popupContent.open(map, marker)
+                }
+                })(marker)
+            )
+            FilteredPlan.push(placeObj);
             };
         }
         console.log(FilteredPlan);

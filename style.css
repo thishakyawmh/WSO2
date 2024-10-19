@@ -34,11 +34,25 @@ body {
     z-index: 10;
 }
 
+.logo {
+    display: flex;
+    justify-content: center; /* Center the logo horizontally */
+    align-items: center;     /* Center the logo vertically if needed */
+    height: 100%;            /* Adjust based on your navbar height */
+}
+
 .logo h1 {
     color: white;
     font-size: 32px;
     font-weight: bold;
+    text-align: center;
+    letter-spacing: 10px; /* Add space between letters */
 }
+
+.logo a {
+    text-decoration: none; /* Remove underline from the link */
+}
+
 
 .nav-links {
     list-style: none;
@@ -114,20 +128,38 @@ body {
     margin-top: 40px;
 }
 
-.buttons-inline button {
-    background-color: #F5A623;
+#find-part-button-1 {
+    background-color: #077c4f;
     color: white;
     padding: 30px;
     font-size: 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for transform */
 }
 
-.buttons-inline button:hover {
-    background-color: #FF6F61; /* Lighter red on hover */
+#find-part-button-1:hover {
+    transform: scale(1.1); /* Scale up on hover */
 }
+
+
+#find-part-button-2 {
+    background-color: #7c2207;
+    color: white;
+    padding: 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for transform */
+}
+
+#find-part-button-2:hover {
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+
 
 /* Right side stat boxes */
 .header-container-right {
@@ -174,8 +206,7 @@ body {
     bottom: 20px;
     right: 20px;
     background-color: #F5A623; /* Circle background color */
-    width: 60px; /* Width of the button */
-    height: 60px; /* Height of the button */
+    padding: 15px 17px;
     border-radius: 50%; /* Makes it a circle */
     display: flex;
     justify-content: center;
@@ -187,13 +218,41 @@ body {
 
 .contact-button .contact-link {
     color: white;
-    font-size: 20px; /* Size of the phone icon */
+    font-size: 16px; /* Size of the phone icon */
     text-decoration: none;
 }
 
 .contact-button:hover {
     background-color: #FF6F61; /* Hover effect */
 }
+
+.code-crew{
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    background-color: #3c0289; /* Circle background color */
+    padding: 15px 18px;
+    border-radius: 50%; /* Makes it a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* On top of other content */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    cursor: pointer;
+}
+
+.code-crew .code-crew-link {
+    color: white;
+    font-size: 16px; /* Size of the phone icon */
+    text-decoration: none;
+}
+
+.code-crew:hover {
+    background-color: #FF6F61; /* Hover effect */
+}
+
+
+
 
 h2 {
     text-align: center;
@@ -801,7 +860,7 @@ button.btn:hover {
 
 /* Table header styling */
 .previous-plan-table th {
-    background-color: #160bb6;
+    background-color: #013b5d;
     color: white;
     padding: 12px;
     text-align: center;
@@ -847,6 +906,7 @@ button.btn:hover {
 #map{
     margin: 10px auto 50px auto;
 }
+
 
 
 
