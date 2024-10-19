@@ -128,39 +128,37 @@ function processPlanData(planArr) {
                 let table = document.getElementById("places");
 
                   
-                    // Add table header if it doesn't exist
-    if (table.tHead === null) {
-        let headerRow = table.createTHead().insertRow(0);
-        let headers = ["Place Name", "Photo", "Rating", "Distance & Duration"];
-        headers.forEach(headerText => {
-            let cell = document.createElement("th");
-            cell.innerHTML = headerText;
-            headerRow.appendChild(cell);
-            cell.style.width = "25%"; 
-            cell.style.backgroundColor = "#262626"; 
-            cell.style.color = "white"; 
-            cell.style.padding = "12px"; 
-            cell.style.textAlign = "center"; 
-            cell.style.fontWeight = "bold"; 
-            cell.style.fontSize = "20px"; 
-        });
-    }
+                if (table.tHead === null) { // If there is no thead, create one
+                    let headerRow = table.createTHead().insertRow(0);
+                    let headers = ["Place Name", "Photo", "Rating", "Distance & Duration", "Action"];
+                    headers.forEach(headerText => {
+                        let cell = document.createElement("th");
+                        cell.innerHTML = headerText;
+                        headerRow.appendChild(cell);
+                        cell.style.width = "20%"; 
+                        cell.style.backgroundColor = "#262626"; // Header background color
+                        cell.style.color = "white"; // Header text color
+                        cell.style.padding = "12px"; // Header padding
+                        cell.style.textAlign = "center"; // Header text alignment
+                        cell.style.fontWeight = "bold"; // Header font weight
+                        cell.style.fontSize = "20px"; // Header font size
+                    });
+                }
+                
+
+                    // Apply table styles
+                         table.style.borderCollapse = "separate";
+                         table.style.borderSpacing = "15px";
+                         table.style.backgroundColor = "#f0f0f0"; // Table background color
+                         table.style.border = "none"; // Table border
+                         table.style.width = "fit-content"; // Table width
+                         table.style.margin = "auto 50px"; // Table margin
+                         table.style.borderRadius = "15px"; // Table border radius
+                         table.style.marginRight = "auto";
+                         table.style.marginLeft = "auto";
+
 
                 let row = table.insertRow();
-
-                // Apply table styles
-table.style.borderCollapse = "separate";
-table.style.borderSpacing = "15px";
-table.style.backgroundColor = "#f0f0f0"; // Table background color
-table.style.border = "none"; // Table border
-table.style.width = "100%"; // Table width
-table.style.margin = "auto 50px"; // Table margin
-table.style.borderRadius = "15px"; // Table border radius
-table.style.marginRight = "auto";
-table.style.marginLeft = "auto";
-
-
-
                 function styleCell(cell) {
                     cell.style.backgroundColor = "#ffffff"; 
                     cell.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)"; 
@@ -170,7 +168,7 @@ table.style.marginLeft = "auto";
                 }
 
                 let cell1 = row.insertCell(0);
-                cell1.innerHTML = `${item.name} <br> <a href="#map" id="${item.name}" onclick="viewPlace(this.id)">View on map</a>`;
+                cell1.innerHTML = `${item.name} <br> <a href="#map" id="vr${item.name}" onclick="viewPlace(this.id)" style="padding: 10px; background-color: #FF5349; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View on map</a>`;
                 if (item.photo){
                     let cell2 = row.insertCell(1);
                     cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${item.photo}"/>`;
@@ -178,7 +176,7 @@ table.style.marginLeft = "auto";
                 else{
                     let photoUrl = "https://via.placeholder.com/150";
                     let cell2 = row.insertCell(1);
-                    cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`
+                    cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`;
                 }
                 if(item.rating){
                     let cell3 = row.insertCell(2);
@@ -186,7 +184,7 @@ table.style.marginLeft = "auto";
                 }
                 else{
                     let cell3 = row.insertCell(2);
-                    cell3.innerHTML = `No Ratings`;
+                    cell3.innerHTML = item.rating ? `${item.rating}/5 , ${item.user_ratings_total} Reviews` : `No Ratings`;
                 }
     
                 let cell4 = row.insertCell(3);
@@ -199,9 +197,8 @@ table.style.marginLeft = "auto";
                 directionsService.route(request,function(result,status){
                     if(status == google.maps.DirectionsStatus.OK){
                         //Get distance and time
-                        cell4.innerHTML = 
-                           `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}
-                            <br> <a href="#map" id="${item.name}" onclick="viewDirection(this.id)">View Route</a>`
+                        cell4.innerHTML = `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}
+                                           <br> <a href="#map" id="dr${item.name}" onclick="viewDirection(this.id)" style="padding: 10px; background-color: darkblue; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View Route</a>`;
                         }
                 });
                 
