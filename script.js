@@ -389,6 +389,8 @@ function createMaker(place, length) {
     </button>`; 
     styleCell(cell5);
     placeObj.geometry = place.geometry;
+    placeObj.types = place.types;
+    console.log(place);
     allPlaces.push(placeObj);
 }
 
@@ -492,7 +494,10 @@ document.addEventListener('DOMContentLoaded', function() {
 //     return forecastData.find(forecast => forecast.date === selectedDate);
 // }
 
-// // Event listener for the form submission
+
+
+// Event listener for the form submission
+
 // weatherForm.addEventListener('submit', async (event) => {
 //     event.preventDefault();
 
