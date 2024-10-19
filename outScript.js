@@ -126,7 +126,49 @@ function processPlanData(planArr) {
                 placeObj.name = item.name;
                 placeObj.types = item.types;
                 let table = document.getElementById("places");
+
+                  
+                    // Add table header if it doesn't exist
+    if (table.tHead === null) {
+        let headerRow = table.createTHead().insertRow(0);
+        let headers = ["Place Name", "Photo", "Rating", "Distance & Duration"];
+        headers.forEach(headerText => {
+            let cell = document.createElement("th");
+            cell.innerHTML = headerText;
+            headerRow.appendChild(cell);
+            cell.style.width = "25%"; 
+            cell.style.backgroundColor = "#262626"; 
+            cell.style.color = "white"; 
+            cell.style.padding = "12px"; 
+            cell.style.textAlign = "center"; 
+            cell.style.fontWeight = "bold"; 
+            cell.style.fontSize = "20px"; 
+        });
+    }
+
                 let row = table.insertRow();
+
+                // Apply table styles
+table.style.borderCollapse = "separate";
+table.style.borderSpacing = "15px";
+table.style.backgroundColor = "#f0f0f0"; // Table background color
+table.style.border = "none"; // Table border
+table.style.width = "100%"; // Table width
+table.style.margin = "auto 50px"; // Table margin
+table.style.borderRadius = "15px"; // Table border radius
+table.style.marginRight = "auto";
+table.style.marginLeft = "auto";
+
+
+
+                function styleCell(cell) {
+                    cell.style.backgroundColor = "#ffffff"; 
+                    cell.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)"; 
+                    cell.style.textAlign = "center"; 
+                    cell.style.fontSize = "16px"; 
+                    cell.style.padding = "12px"; 
+                }
+
                 let cell1 = row.insertCell(0);
                 cell1.innerHTML = `${item.name} <br> <a href="#map" id="${item.name}" onclick="viewPlace(this.id)">View on map</a>`;
                 if (item.photo){
