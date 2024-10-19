@@ -123,6 +123,7 @@ function addPlace(id) {
                 cell.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)"; // Cell shadow
                 cell.style.textAlign = "center"; // Cell text alignment
                 cell.style.fontSize = "16px"; // Cell font size
+                cell.style.padding = "12px"; // Cell padding
             }
 
             let cell1 = row.insertCell(0);
@@ -132,7 +133,6 @@ function addPlace(id) {
             let cell2 = row.insertCell(1);
             let photoUrl = item.photo ? item.photo : "https://via.placeholder.com/150";
             cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`;
-            cell2.style.padding = "12px"; // Cell padding
             styleCell(cell2);
 
             let cell3 = row.insertCell(2);
@@ -166,7 +166,7 @@ function addPlace(id) {
                 REMOVE
                 </button>`;
             styleCell(cell5);
-
+            cell5.style.padding = "0px"; 
             final.push(item);
             console.log(final);
 
@@ -335,6 +335,7 @@ function createMaker(place, length) {
         cell.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)";
         cell.style.textAlign = "center";
         cell.style.fontSize = "16px";
+        cell.style.padding = "12px"; 
     }
 
     let cell1 = row.insertCell(0);
@@ -388,6 +389,7 @@ function createMaker(place, length) {
         ADD
     </button>`; 
     styleCell(cell5);
+    cell5.style.padding = "0px"; 
     placeObj.geometry = place.geometry;
     placeObj.types = place.types;
     console.log(place);
