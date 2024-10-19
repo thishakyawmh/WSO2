@@ -1,4 +1,5 @@
 let planArr = [];
+let FilteredPlan = [];
 
 let map,position,directionsService,directionsDisplay,Home_location;
 
@@ -121,7 +122,9 @@ function processPlanData(planArr) {
         addfunc(planArr[i])
 
         function addfunc(item) {
-    
+                const placeObj = {};
+                placeObj.name = item.name;
+                placeObj.types = item.types;
                 let table = document.getElementById("places");
                 let row = table.insertRow();
                 let cell1 = row.insertCell(0);
@@ -183,9 +186,10 @@ function processPlanData(planArr) {
                 }
                 })(marker)
             )
+            FilteredPlan.push(placeObj);
             };
         }
-
+        console.log(FilteredPlan);
 }
 
 window.addEventListener('load', function() {
