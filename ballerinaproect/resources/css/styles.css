@@ -315,6 +315,7 @@ select {
 
 .form-group-button {
     display: flex;
+    margin-top: 30px;
 }
 
 .form-group-button button[type="submit"] {

@@ -2,20 +2,27 @@ let map,position,directionsService,directionsDisplay,Home_location;
 let allPlaces = [];
 let final = [];
 
-function removePlace(id){
-    id = id.slice(1,);
-    console.log(id);
-    final.forEach(rmfunc);
-
-    function rmfunc(item,index){
-        if(item.name === id){
-            final.splice(index, 1);
-            document.getElementById("FinalPlaces").deleteRow(index);
+function removePlace(buttonId) {
+    // Extract the item name from the button ID
+    const itemName = buttonId.replace('r', '');
+    
+    // Find the table
+    const table = document.getElementById("FinalPlaces");
+    
+    // Iterate through the rows to find the matching item
+    for (let i = 1; i < table.rows.length; i++) { // Start from 1 to skip header row
+        const cell = table.rows[i].cells[0]; // Assuming the place name is in the first cell
+        if (cell.innerHTML.includes(itemName)) {
+            table.deleteRow(i); // Remove the row
+            break; // Exit the loop after removing the row
         }
     }
-    console.log(final);
     
+    // Optionally, remove the item from the final array if necessary
+    final = final.filter(item => item.name !== itemName);
+    console.log(final); // Log the updated array
 }
+
 
 function viewPlace(id){
     const check = id.slice(0,2);
@@ -72,57 +79,97 @@ function viewDirection(id){
     }
 }
 
-function addPlace(id){
+function addPlace(id) {
     allPlaces.forEach(addfunc);
 
     function addfunc(item) {
-        if(item.name === id){
-
-            //!!!!!!!!!!!!!!!!!!First Table Start!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if (item.name === id) {
             let table = document.getElementById("FinalPlaces");
-            table.classList.add("styled-table"); // Add a class to your table
+
+            // Check if the header already exists
+            if (table.tHead === null) { // If there is no thead, create one
+                let headerRow = table.createTHead().insertRow(0);
+                let headers = ["Place Name", "Photo", "Rating", "Distance & Duration", "Action"];
+                headers.forEach(headerText => {
+                    let cell = document.createElement("th");
+                    cell.innerHTML = headerText;
+                    headerRow.appendChild(cell);
+                    cell.style.width = "20%"; 
+                    cell.style.backgroundColor = "#262626"; // Header background color
+                    cell.style.color = "white"; // Header text color
+                    cell.style.padding = "12px"; // Header padding
+                    cell.style.textAlign = "center"; // Header text alignment
+                    cell.style.fontWeight = "bold"; // Header font weight
+                    cell.style.fontSize = "20px"; // Header font size
+                });
+            }
+
             let row = table.insertRow();
+            
+            // Apply table styles
+            table.style.borderCollapse = "separate";
+            table.style.borderSpacing = "15px";
+            table.style.backgroundColor = "#f0f0f0"; // Table background color
+            table.style.border = "none"; // Table border
+            table.style.width = "100%"; // Table width
+            table.style.margin = "auto 50px"; // Table margin
+            table.style.borderRadius = "15px"; // Table border radius
+            table.style.marginRight = "auto";
+            table.style.marginLeft = "auto";
+
+            // Set common style for table cells
+            function styleCell(cell) {
+                cell.style.backgroundColor = "#ffffff"; // Cell background color
+                cell.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)"; // Cell shadow
+                cell.style.textAlign = "center"; // Cell text alignment
+                cell.style.fontSize = "16px"; // Cell font size
+            }
+
             let cell1 = row.insertCell(0);
-            cell1.innerHTML = `${item.name} <br> <a href="#map" id="vr${item.name}" onclick="viewPlace(this.id)">View on map</a>`;
-            if (item.photo){
-                let cell2 = row.insertCell(1);
-                cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${item.photo}"/>`;
-            }
-            else{
-                let photoUrl = "https://via.placeholder.com/150";
-                let cell2 = row.insertCell(1);
-                cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`
-            }
-            if(item.rating){
-                let cell3 = row.insertCell(2);
-                cell3.innerHTML = `${item.rating}/5 , ${item.user_ratings_total} Reviews`;
-            }
-            else{
-                let cell3 = row.insertCell(2);
-                cell3.innerHTML = `No Ratings`;
-            }
+            cell1.innerHTML = `${item.name} <br> <a href="#map" id="vr${item.name}" onclick="viewPlace(this.id)" style="padding: 10px; background-color: #FF5349; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View on map</a>`;
+            styleCell(cell1);
+
+            let cell2 = row.insertCell(1);
+            let photoUrl = item.photo ? item.photo : "https://via.placeholder.com/150";
+            cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`;
+            cell2.style.padding = "12px"; // Cell padding
+            styleCell(cell2);
+
+            let cell3 = row.insertCell(2);
+            cell3.innerHTML = item.rating ? `${item.rating}/5 , ${item.user_ratings_total} Reviews` : `No Ratings`;
+            styleCell(cell3);
 
             let cell4 = row.insertCell(3);
             let request = {
-                origin:Home_location,
+                origin: Home_location,
                 destination: item.geometry.location,
-                travelMode:google.maps.TravelMode.DRIVING,//WALKING,BYCYCLING,TRANSIT
-                unitSystem:google.maps.UnitSystem.METRIC,
-            }
-            directionsService.route(request,function(result,status){
-                if(status == google.maps.DirectionsStatus.OK){
-                    //Get distance and time
-                    cell4.innerHTML = 
-                       `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}
-                        <br> <a href="#map" id="dr${item.name}" onclick="viewDirection(this.id)">View Route</a>`
-                    }
+                travelMode: google.maps.TravelMode.DRIVING, // WALKING, BYCYCLING, TRANSIT
+                unitSystem: google.maps.UnitSystem.METRIC,
+            };
+            directionsService.route(request, function(result, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    // Get distance and time
+                    cell4.innerHTML = `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}<br> <a href="#map" id="dr${item.name}" onclick="viewDirection(this.id)" style="padding: 10px; background-color: darkblue; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View Route</a>`;
+                }
             });
+            styleCell(cell4);
 
             let cell5 = row.insertCell(4);
-            cell5.innerHTML = `<button type="button" id="r${item.name}" onclick="removePlace(this.id)" class="btn btn-warning">REMOVE</button>`;
+            cell5.style.padding = "0"; // Remove cell padding
+            cell5.style.height = "100px"; // Set a fixed height for the cell
+            cell5.innerHTML = `
+                <button type="button" id="r${item.name}" onclick="removePlace(this.id)" 
+                style="width: 100%; height: 100%; padding: 0; margin: 0; 
+                background-color: #8B0000; color: white; border: none; 
+                border-radius: 5px; cursor: pointer; display: block; box-sizing: border-box; 
+                font-family: 'Poppins', sans-serif; font-size: 25px;">
+                REMOVE
+                </button>`;
+            styleCell(cell5);
+
             final.push(item);
             console.log(final);
-            
+
             const marker = new google.maps.Marker({
                 map: map,
                 position: item.geometry.location,
@@ -130,25 +177,26 @@ function addPlace(id){
             });
             let bounds = new google.maps.LatLngBounds();
             if (!item.geometry) {
-            return;
+                return;
             }
             if (item.geometry.viewport) {
-            bounds.union(item.geometry.viewport);
+                bounds.union(item.geometry.viewport);
             } else {
-            bounds.extend(item.geometry.viewport);
+                bounds.extend(item.geometry.viewport);
             }
             map.fitBounds(bounds);
             const popupContent = new google.maps.InfoWindow();
             google.maps.event.addListener(marker, 'click', (function(marker) {
-                return function(){
-                popupContent.setContent(item.name)
-                popupContent.open(map, marker)
-            }
-            })(marker)
-        )//!!!!!!!!!!!!!!!!!!First Table End!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        };
+                return function() {
+                    popupContent.setContent(item.name);
+                    popupContent.open(map, marker);
+                };
+            })(marker));
+        }
     }
 }
+
+
 
 function initMap(){
     autocomplete = new google.maps.places.Autocomplete((document.getElementById("autocomplete")),
@@ -284,7 +332,6 @@ function createMaker(place, length) {
     // Set common style for table cells
     function styleCell(cell) {
         cell.style.backgroundColor = "#ffffff";
-        cell.style.padding = "12px";
         cell.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)";
         cell.style.textAlign = "center";
         cell.style.fontSize = "16px";
@@ -298,6 +345,7 @@ function createMaker(place, length) {
     let cell2 = row.insertCell(1);
     let photoUrl = place.photos ? place.photos[0].getUrl() : "https://via.placeholder.com/150";
     cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`;
+    cell2.style.padding = "12px"; // Cell padding
     styleCell(cell2);
     placeObj.photo = photoUrl;
 
@@ -329,16 +377,22 @@ function createMaker(place, length) {
     styleCell(cell4);
 
     let cell5 = row.insertCell(4);
-    cell5.innerHTML = `<button type="button" id="${placeObj.name}" onclick="addPlace(this.id)" class="btn btn-primary">ADD</button>`;
+    cell5.style.padding = "0"; // Remove cell padding
+    cell5.style.height = "100px"; // Set a fixed height for the cell
+    cell5.innerHTML = `
+        <button type="button" id="${placeObj.name}" onclick="addPlace(this.id)" 
+        style="width: 100%; height: 100%; padding: 0; margin: 0; 
+        background-color: #004000; color: white; border: none; 
+        border-radius: 5px; cursor: pointer; display: block; box-sizing: border-box; 
+        font-family: 'Poppins', sans-serif; font-size: 25px;">
+        ADD
+    </button>`; 
     styleCell(cell5);
     placeObj.geometry = place.geometry;
     placeObj.types = place.types;
     console.log(place);
     allPlaces.push(placeObj);
 }
-
-
-
 
 
 // Get the input elements
