@@ -1457,7 +1457,7 @@
         }
     }
 
-    const apiKey = "AIzaSyA8IMK4RVyL2bbI6VAQeawx4M1Ooy7Sruc";
+    const apiKey = "APIKEY";
     const genAI = new GoogleGenerativeAI(apiKey);
     let FilteredPlan = [];
     let planArr = [];
