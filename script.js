@@ -439,99 +439,10 @@ document.addEventListener('DOMContentLoaded', function() {
         axios.post("http://localhost:9090/plans/plans", { plan: finalJSON })
         .then((response) => {
             const planId = response.data; // Ensure the response contains the ID
-            window.location.href = `output.html?id=${planId}`;
+            window.location.href = `PlanAI.html?id=${planId}`;
         })
         .catch((error) => {
             console.error('Failed to submit plan', error);
         });
     });
 });
-
-
-
-// function incrementCount(id, targetValue, duration) {
-//     let currentValue = 0;
-//     const incrementStep = Math.ceil(targetValue / (duration / 10)); // Calculate step size
-
-//     const counter = setInterval(() => {
-//         currentValue += incrementStep;
-//         if (currentValue >= targetValue) {
-//             currentValue = targetValue;
-//             clearInterval(counter); // Stop the interval when the target is reached
-//             document.getElementById(id).innerText = currentValue.toLocaleString() + '+'; // Append "+" after reaching target
-//         } else {
-//             document.getElementById(id).innerText = currentValue.toLocaleString(); // Format the number
-//         }
-//     }, 10); // Interval time in milliseconds
-// }
-
-// // Run the function for both live user count and total plans
-// document.addEventListener("DOMContentLoaded", function() {
-//     incrementCount('live-user-count', 1500, 2000); // 1500 users in 2 seconds
-//     incrementCount('total-plans', 5000, 2500); // 5000 plans in 2.5 seconds
-// });
-
-
-// const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
-// const weatherForm = document.getElementById('weather-form');
-// const weatherOutput = document.getElementById('weather-output');
-// const weatherText = document.getElementById('weather-text');
-// const weatherIcon = document.getElementById('weather-icon');
-
-// // Function to fetch weather forecast
-// async function getWeatherForecast(location) {
-//     const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`;
-    
-//     try {
-//         const response = await fetch(url);
-//         const data = await response.json();
-//         return data.forecast.forecastday;
-//     } catch (error) {
-//         console.error('Error fetching weather data:', error);
-//     }
-// }
-
-// // Function to find the closest forecast based on the selected date
-// function getForecastForDate(forecastData, selectedDate) {
-//     return forecastData.find(forecast => forecast.date === selectedDate);
-// }
-
-
-
-// Event listener for the form submission
-
-// weatherForm.addEventListener('submit', async (event) => {
-//     event.preventDefault();
-
-//     // Get the user's input
-//     const location = document.getElementById('autocomplete');
-//     const selectedDate = document.getElementById('date');
-
-//     // Fetch the weather forecast
-//     const forecastData = await getWeatherForecast(location);
-
-//     // Get the forecast for the selected date
-//     const forecast = getForecastForDate(forecastData, selectedDate);
-    
-//     if (forecast) {
-//         const condition = forecast.day.condition.text; // Weather condition (e.g., "Sunny", "Rainy")
-//         const temp = forecast.day.avgtemp_c; // Average temperature in Celsius
-//         const icon = forecast.day.condition.icon; // Icon URL from the API
-
-//         // Update the text and icon
-//         weatherText.textContent = `${condition}, ${temp}°C`;
-//         weatherIcon.src = icon; // Set the icon from API
-
-//         // Optionally change the icon or text based on weather condition
-//         if (condition.toLowerCase().includes('sunny')) {
-//             weatherIcon.src = 'weather-images/sun.png';  // Use local sunny icon
-//         } else if (condition.toLowerCase().includes('cloudy')) {
-//             weatherIcon.src = 'weather-images/cloudy.png';  // Use local cloudy icon
-//         } else if (condition.toLowerCase().includes('rain')) {
-//             weatherIcon.src = 'weather-images/rainy-day.png';  // Use local rainy icon
-//         }
-//     } else {
-//         weatherText.textContent = "No forecast available for this date";
-//         weatherIcon.src = ''; // Remove the icon if no data
-//     }
-// });

@@ -60,5 +60,3 @@ function populatePlans() {
 function openPlan(id) {
     window.location.href = `output.html?id=${id}`;
 }
-
-// Populate the table on page load

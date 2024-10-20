@@ -98,6 +98,8 @@ function fetchPlanData(planId) {
         .then((res) => {
             const plan = res.data;
             console.log(plan);
+            let cleanedText = plan.PlanGuid.replace(/\*\*/g, '').replace(/\d+\.\s*/g, '');
+            document.getElementById('activity-container').innerHTML = cleanedText;
             planArr = JSON.parse(plan.plan);
             // Call any function that needs to use planArr here
             processPlanData(planArr);

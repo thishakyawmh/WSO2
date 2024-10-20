@@ -123,16 +123,17 @@
         </div>
     </div>
     <br>
+    <div class="output-section-guide">
+        <h2 class="output-section-title">Tour Guide</h2>
+        <div class="activity-container" id="activity-container"></div> <!-- Empty container for activities -->
+    </div>
+    <br>
     <div class="map-section">
     <a name="map"></a>
     <div id="map"></div>
     </div>
     <table class="table table-bordered table-striped" id="places"></table>
 
-    <div class="output-section-guide">
-        <h2 class="output-section-title">Activity Schedule</h2>
-        <div class="activity-container"></div> <!-- Empty container for activities -->
-    </div>
     <script>
         function redirectToPage(url) {
     window.location.href = url; // Redirect to the given URL
@@ -144,67 +145,7 @@
     <script src="outScript.js"></script>
     <script
       async
-      src="https://maps.googleapis.com/maps/api/js?key=!!!!!!&libraries=places,maps,marker&callback=initMap"></script>
-
-<script>
-    const activityContainer = document.querySelector('.activity-container');
-
-    // Simulated function to fetch content from AI API
-    async function fetchAIContent() {
-        // Simulating an API response with a delay
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                // Here, you would normally fetch data from your AI API
-                const activities = [
-                    { number: "01", step: "Place 01" },
-                    { number: "02", step: "Place 02" },
-                    { number: "03", step: "Place 03" },
-                    // Add more activities as needed
-                ];
-                resolve(activities); // Return the simulated activities
-            }, 1000); // Simulate a 1-second delay
-        });
-    }
-
-    // Function to create activity blocks
-    async function createActivityBlocks() {
-        const activities = await fetchAIContent(); // Fetch AI content
-
-        // Check if activities are available
-        if (activities && activities.length > 0) {
-            activities.forEach(activity => {
-                // Create the main activity div
-                const activityDiv = document.createElement('div');
-                activityDiv.classList.add('activity');
-
-                // Create the activity number div
-                const activityNumberDiv = document.createElement('div');
-                activityNumberDiv.classList.add('activity-number');
-                activityNumberDiv.textContent = activity.number; // Set number from AI content
-
-                // Create the activity step div
-                const activityStepDiv = document.createElement('div');
-                activityStepDiv.classList.add('activity-step');
-                activityStepDiv.textContent = activity.step; // Set step from AI content
-
-                // Append number and step to activity div
-                activityDiv.appendChild(activityNumberDiv);
-                activityDiv.appendChild(activityStepDiv);
-
-                // Append activity div to the container
-                activityContainer.appendChild(activityDiv);
-            });
-        } else {
-            // Handle case where no activities are returned
-            const noActivitiesMessage = document.createElement('div');
-            noActivitiesMessage.textContent = 'No activities available.';
-            activityContainer.appendChild(noActivitiesMessage);
-        }
-    }
-
-    // Call the function to create activity blocks
-    createActivityBlocks();
-</script>
+      src="https://maps.googleapis.com/maps/api/js?key=!!APIKEY!!&libraries=places,maps,marker&callback=initMap"></script>
 
 
 </body>
