@@ -181,17 +181,21 @@ function processPlanData(planArr) {
                     let photoUrl = "https://via.placeholder.com/150";
                     let cell2 = row.insertCell(1);
                     cell2.innerHTML = `<img width="200" height="150" style="border-radius: 8px" src="${photoUrl}"/>`;
+                    styleCell(cell2);
                 }
                 if(item.rating){
                     let cell3 = row.insertCell(2);
                     cell3.innerHTML = `${item.rating}/5 , ${item.user_ratings_total} Reviews`;
+                    styleCell(cell3);
                 }
                 else{
                     let cell3 = row.insertCell(2);
                     cell3.innerHTML = item.rating ? `${item.rating}/5 , ${item.user_ratings_total} Reviews` : `No Ratings`;
+                    styleCell(cell3);
                 }
     
                 let cell4 = row.insertCell(3);
+                styleCell(cell4);
                 let request = {
                     origin:Home_location,
                     destination: item.geometry.location,
