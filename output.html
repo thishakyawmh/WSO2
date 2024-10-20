@@ -33,14 +33,30 @@
                             <span class="output-label" >Plan Name</span>
                             <div class="output-image-placeholder"><i class="fa-solid fa-signature"></i></div>
                         </div>
-                        <div class="output-value" id="plan_name">Hello</div>
+                        <div class="output-value" id="plan_name"></div>
                     </div>
                     <div class="output-item" style="background:linear-gradient(135deg, #cc0101, #ff3838);">
                         <div class="output-item-header">
                             <span class="output-label">Date & Time</span>
                             <div class="output-image-placeholder"><i class="fa-solid fa-calendar-days"></i></div>
                         </div>
-                        <div class="output-value" id="dateTime">..</div>
+                        <div class="output-value" id="dateTime"></div>
+                    </div>
+                </div>
+                <div class="output-overview-row">
+                    <div class="output-item" style="background:linear-gradient(135deg, #17566e, #0f75a5);">
+                        <div class="output-item-header">
+                            <span class="output-label">Budget</span>
+                            <div class="output-image-placeholder"><i class="fa-solid fa-dollar-sign"></i></div>
+                        </div>
+                        <div class="output-value" id="budget"></div>
+                    </div>
+                    <div class="output-item" style="background:linear-gradient(135deg, #0a772e, #1cb953);">
+                        <div class="output-item-header">
+                            <span class="output-label">No. of Participants</span>
+                            <div class="output-image-placeholder"><i class="fa-solid fa-user-group"></i></div>
+                        </div>
+                        <div class="output-value" id="participants"></div>
                     </div>
                 </div>
                 <div class="output-overview-row">
@@ -49,83 +65,19 @@
                             <span class="output-label">Location</span>
                             <div class="output-image-placeholder"><i class="fa-solid fa-location-dot"></i></div>
                         </div>
-                        <div class="output-value" id="location">Ella</div>
-                    </div>
-                    <div class="output-item" style="background:linear-gradient(135deg, #0a772e, #1cb953);">
-                        <div class="output-item-header">
-                            <span class="output-label">No. of Participants</span>
-                            <div class="output-image-placeholder"><i class="fa-solid fa-user-group"></i></div>
-                        </div>
-                        <div class="output-value" id="participants">2</div>
+                        <div class="output-value" id="location"></div>
                     </div>
                 </div>
-                <div class="output-overview-row">
-                    <div class="output-item" style="background:linear-gradient(135deg, #4a1377, #7720e9);">
-                        <div class="output-item-header">
-                            <span class="output-label">Total Distance</span>
-                            <div class="output-image-placeholder"><i class="fa-solid fa-road"></i></div>
-                        </div>
-                        <div class="output-value">52 km</div>
-                    </div>
-                    <div class="output-item" style="background:linear-gradient(135deg, #17566e, #0f75a5);">
-                        <div class="output-item-header">
-                            <span class="output-label">Budget</span>
-                            <div class="output-image-placeholder"><i class="fa-solid fa-dollar-sign"></i></div>
-                        </div>
-                        <div class="output-value" id="budget"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- <div class="output-section">
-                <h2 class="output-section-title">Selected Places</h2>
-                <div class="output-item-selected">Place 01</div>
-                <div class="output-item-selected">Place 02</div>
-                <div class="output-item-selected">Place 03</div>
-                <div class="output-item-selected">Place 04</div>
-            </div> -->
-        </div>
-        
-        <div class="output-row">
-            <div class="output-section">
-                <h2 class="output-section-title">Weather & Transportation</h2>
-                <div class="output-weather-transport">
-                    <div class="output-weather" id="weather-output">
-                        <img src="weather-images/cloudy.png" alt="Weather Icon" id="weather-icon">
-                        <p class="weather" id="weather-text">Sunny, 25°</p>
-                    </div>
-                    <div class="output-transport">
-                        <p>Transportation Modes</p>
-                        <div class="output-transport-modes">
-                            <div class="output-transport-mode"><i class="fa-solid fa-car"></i></div>
-                            <div class="output-transport-mode"><i class="fa-solid fa-bus"></i></div>
-                            <div class="output-transport-mode"><i class="fa-solid fa-train"></i></div>
-                            <div class="output-transport-mode"><i class="fa-solid fa-person-walking"></i></div>
-                        </div>
-                        <button class="output-button"><i class="fa-solid fa-diamond-turn-right"></i>&nbsp;Get Directions</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="output-section">
-                <h2 class="output-section-title">Tips & Things</h2>
-                <div class="output-tips-and-things">
-                <div class="output-item">
-                    <p><strong>Things</strong></p>
-                    <p>Remember to bring sunscreen and sunglasses. If weather changes, carry an umbrella.</p>
-                </div>
-                <div class="output-item2">
-                    <p><strong>Tips</strong></p>
-                    <p>Remember to bring sunscreen and sunglasses. If weather changes, carry an umbrella.</p>
-                </div>
-            </div>
             </div>
         </div>
-    </div>
-    <br>
+     </div>
     <div class="output-section-guide">
-        <h2 class="output-section-title">Tour Guide</h2>
-        <div class="activity-container" id="activity-container"></div> <!-- Empty container for activities -->
+        <h2 class="output-section-title">Tour Guide 
+            <span>Powered by 
+                    <img src="img/Google-Gemini-Logo-PNG-Photos.png" alt="Gemini" class="gemini-logo">
+            </span>
+        </h2>
+        <div class="activity-container" id="activity-container"></div> 
     </div>
     <br>
     <div class="map-section">

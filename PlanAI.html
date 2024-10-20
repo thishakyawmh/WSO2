@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Please Wait...</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
-<body>
-    <h1>Please Wait</h1>
+<body class="loading">
+    <!-- Loading GIF animation -->
+    <img src="img/loading.gif" alt="Loading..." class="loading-gif">
+
+    <!-- Please Wait Text -->
+    <h1 class="loading-h">Generating...</h1>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.js"
-integrity="sha512-luUnkeG+uabiT2pZdi5ME5uADvq+FpDs2fK5V0nVXrHCND9F077fKaE9W//oJvGnWSmwQmCau63A6s3um1NZmg=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-luUnkeG+uabiT2pZdi5ME5uADvq+FpDs2fK5V0nVXrHCND9F077fKaE9W//oJvGnWSmwQmCau63A6s3um1NZmg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="dist/bundle.js"></script>
 </body>
 </html>

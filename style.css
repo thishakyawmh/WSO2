@@ -479,9 +479,10 @@ button.btn:hover {
 }
 .output-section-title {
     color: #1d1d1d;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    vertical-align: center;
 }
 .output-overview-row {
     display: flex;
@@ -907,6 +908,51 @@ button.btn:hover {
     margin: 10px auto 50px auto;
 }
 
+
+.output-section-title span{
+    font-size: 14px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    padding: 8px;
+    font-weight: 500;
+    margin-left: 10px;
+    background: linear-gradient(to top, #e1ded5, #e7f3e1);
+
+}
+
+
+.gemini-logo {
+    width: 50px; /* Adjust the size as needed */
+    height: auto;
+    vertical-align: middle; /* Aligns the logo with the text */
+    margin-bottom: 8px;
+    margin-left: 2px;
+}
+
+
+.loading {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Disable scroll bar */
+    flex-direction: column; /* Stack the content vertically */
+}
+
+.loading-h {
+    font-size: 24px;
+    margin-top: 20px;
+    font-family: poppins;
+    color: #1f1f1f;
+}
+
+.loading-gif {
+    width: 70px; /* Adjust the size of your GIF */
+    height: auto;
+}
 
 
 
