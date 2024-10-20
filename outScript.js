@@ -170,7 +170,7 @@ function processPlanData(planArr) {
                 }
 
                 let cell1 = row.insertCell(0);
-                cell1.innerHTML = `${item.name} <br> <a href="#map" id="vr${item.name}" onclick="viewPlace(this.id)" style="padding: 10px; background-color: #FF5349; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View on map</a>`;
+                cell1.innerHTML = `${item.name} <br> <a href="#map" id="${item.name}" onclick="viewPlace(this.id)" style="padding: 10px; background-color: #FF5349; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View on map</a>`;
                 styleCell(cell1);
                 
                 if (item.photo){
@@ -208,7 +208,7 @@ function processPlanData(planArr) {
                     if(status == google.maps.DirectionsStatus.OK){
                         //Get distance and time
                         cell4.innerHTML = `${result.routes[0].legs[0].distance.text}<br> ${result.routes[0].legs[0].duration.text}
-                                           <br> <a href="#map" id="dr${item.name}" onclick="viewDirection(this.id)" style="padding: 10px; background-color: darkblue; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View Route</a>`;
+                                           <br> <a href="#map" id="${item.name}" onclick="viewDirection(this.id)" style="padding: 10px; background-color: darkblue; color: white; text-align: center; border-radius: 5px; margin-top: 15px; display: inline-block; text-decoration: none;">View Route</a>`;
                         }
                 });
                 
