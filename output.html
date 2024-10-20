@@ -133,13 +133,18 @@
         <h2 class="output-section-title">Activity Schedule</h2>
         <div class="activity-container"></div> <!-- Empty container for activities -->
     </div>
+    <script>
+        function redirectToPage(url) {
+    window.location.href = url; // Redirect to the given URL
+}
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.js" integrity="sha512-luUnkeG+uabiT2pZdi5ME5uADvq+FpDs2fK5V0nVXrHCND9F077fKaE9W//oJvGnWSmwQmCau63A6s3um1NZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="outScript.js"></script>
     <script
       async
-      src="https://maps.googleapis.com/maps/api/js?key=!!!&libraries=places,maps,marker&callback=initMap"></script>
+      src="https://maps.googleapis.com/maps/api/js?key=!!!!!!&libraries=places,maps,marker&callback=initMap"></script>
 
 <script>
     const activityContainer = document.querySelector('.activity-container');
