@@ -47,6 +47,15 @@ service /plans on new http:Listener(9090) {
     resource function get plans/[string id]() returns Plan|error {
         return getPlan(self.Plandb, id);
     }
+
+    resource function put plans/[string id](PlanUpdate update) returns Plan|error {
+        mongodb:Collection plans = check self.Plandb->getCollection("Plans");
+        mongodb:UpdateResult updateResult = check plans->updateOne({id}, {set: update});
+        if updateResult.modifiedCount != 1 {
+            return error(string `Failed to update the plan with id ${id}`);
+        }
+        return getPlan(self.Plandb, id);
+    }
 }
 
 isolated function getPlan(mongodb:Database db, string id) returns Plan|error {
