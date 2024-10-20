@@ -1,0 +1,13 @@
+#1 Google Map API key with access to These 4 APIs
+Maps JavaScript API
+Places API
+Directions API
+Distance Matrix API
+
+Enter the Google map APIKEYs in these files - new-plan.html(138th line), output.html(100th line)
+
+#2 Enter the Google Gemini APi API key in the src/index.js(3rd line)
+
+#3 Run [npm run dev]
+
+#4 Start the ballerina server in the backend file(cd backend-> bal run)
